@@ -99,7 +99,11 @@ span.round-tab:hover {
 .wizard h3 {
     margin-top: 0;
 }
-
+#btnDescarga{
+    position: absolute;
+	right: 50%;
+    left: 50%;
+}
 @media( max-width : 50px ) {
 
     .wizard {
