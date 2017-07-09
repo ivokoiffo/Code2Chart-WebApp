@@ -2,17 +2,17 @@ package com.grupo401.code2chart.Controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class MainController {
-	@RequestMapping({
-		"/",
-		//aca definen las rutas validas que van a querer que el 
-		//coso este tome todo lo que sea distinto de esto va
-		//al metodo de abajo que redireccion al home
-	})
+	
+	@RequestMapping(value="/",method = RequestMethod.GET)
 	public String homepage(){
-		return "forward:/index.html";
+		return "index";
 	}
-
+	@RequestMapping(method = RequestMethod.GET)
+	public String redireccion(){
+		return "redirect:/";
+	}
 }
