@@ -1,0 +1,7 @@
+/target/
+
+/.settings/
+.classpath
+.project
+/.idea/
+tp-tacs-1c2017.iml
