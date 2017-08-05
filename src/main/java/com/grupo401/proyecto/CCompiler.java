@@ -4,28 +4,28 @@ import org.antlr.v4.runtime.*;
 
 import cUtils.CLexer;
 import cUtils.CParser;
-import cUtils.CParser.CompilationUnitContext;
 import exceptions.UnableToParseFileException;
 
 
 public class CCompiler {
 	
-	public void compile(String file){
+	public AbstractSyntaxTreeConverter compile(String file){
+		AbstractSyntaxTreeConverter ast = null;
+		
 		try {
-			ANTLRInputStream input = new ANTLRInputStream(file);
-
+			CharStream input = CharStreams.fromString(file);
 			CLexer lexer = new CLexer(input);
-
 			CParser parser = new CParser(new CommonTokenStream(lexer));
+			
 			CParser.CompilationUnitContext tree = parser.compilationUnit();
 			
-			MyCListener myListener = new MyCListener();
-			AbstractSyntaxTreeConverter ast = new AbstractSyntaxTreeConverter(tree);
-			System.out.println(ast.toString()); // print LISP-style tree
+			ast = new AbstractSyntaxTreeConverter(tree);
 
 		} catch (Exception e) {
 			new UnableToParseFileException();
 		}
+		
+		return ast;
 	}
 }
 

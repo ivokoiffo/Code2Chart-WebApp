@@ -1,22 +1,31 @@
 package com.grupo401.proyecto;
 
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Collectors;
 
 import org.junit.Test;
 
-import cUtils.CCompiler;
 
 public class ParserTest {
 	
-	private String printFile = "/home/nico/Escritorio/testFiles/hello.c";
+	File file = new File("hello.c");
+	
+	private String path = file.getAbsolutePath();
 	
 	@Test
 	public void testCompiler() throws Exception {
-		String filePreParse = Files.lines(Paths.get(printFile)).collect(Collectors.joining());
-				
+		String filePreParse = Files.lines(Paths.get(path)).collect(Collectors.joining());
+		
 		CCompiler compiler = new CCompiler();
-		compiler.compile(filePreParse);
+		AbstractSyntaxTreeConverter ast = compiler.compile(filePreParse);
+		
+		System.out.println(ast.toString());
+		
+		MyCVisitor visitor = new MyCVisitor();
+		
+		visitor.visit(ast);
+		
 	}
 }
