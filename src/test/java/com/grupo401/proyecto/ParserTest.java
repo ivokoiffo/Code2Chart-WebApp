@@ -21,7 +21,7 @@ public class ParserTest {
 		CCompiler compiler = new CCompiler();
 		AbstractSyntaxTreeConverter ast = compiler.compile(filePreParse);
 		
-		System.out.println(ast.toString());
+		//System.out.println(ast.toString());
 		
 		MyCVisitor visitor = new MyCVisitor();
 		

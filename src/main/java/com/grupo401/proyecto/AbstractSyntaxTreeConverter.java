@@ -5,6 +5,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class AbstractSyntaxTreeConverter {
 	/**
@@ -148,5 +149,22 @@ public class AbstractSyntaxTreeConverter {
 
         return builder.toString();
     }
+
+    public String getChildrenContent() {
+    	return this.getChildren().stream().map(c->c.getTokenContent()).collect(Collectors.joining());
+    }
+    
+	private String getTokenContent() {
+		String s = new String();
+		
+		if(this.getPayload() instanceof Token){
+			
+			Token token = (Token) this.payload;
+			s = token.getText();
+		} else {
+			s = this.children.stream().map(c->c.getTokenContent()).collect(Collectors.joining());
+		}
+		return s;
+	}
 
 }

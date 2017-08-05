@@ -7,19 +7,25 @@ public class MyCVisitor {
 	public void visit(AbstractSyntaxTreeConverter ast) {
 		
 		switch(ast.getPayload().toString()){
+		//TRES CASOS DISTINTOS: IF, SWITCH Y ?:
 			case "selectionStatement":
 				System.out.println("CONSULTA");
 			break;
-			case "iterationStatement":
-				System.out.println("CICLO");
+			
+			//TRES CASOS DISTINTOS: FOR, WHILE Y DO WHILE			
+			case "forCondition":
+				System.out.println("CICLO: " + ast.getChildrenContent());
 			break;
-			case "expression":
-				System.out.println("ASIGNACION/LLAMADA: " + ast.getPayload());
+			
+			//EXPRESIONES, FUNCIONES Y ASIGNACIONES VARIAS			
+			case "expression": case "initDeclaratorList":
+				System.out.println("ASIGNACION/LLAMADA: " + ast.getChildrenContent());
 			break;
+		
 			default:
 				for (int i = 0; i < ast.getChildren().size(); i++) {
 	                if (!(ast.getPayload() instanceof Token)) {
-	                    // Only traverse down if the payload is not a Token.
+	                    //SOLO BAJAR AL HIJO SI NO ES UN TOKEN
 	                    visit(ast.getChildren().get(i));
 	                }
 	            }
