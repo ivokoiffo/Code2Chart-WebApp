@@ -75,12 +75,12 @@ public class AbstractSyntaxTreeConverter {
             // child nodes.
             new AbstractSyntaxTreeConverter(ast, tree);
         }
-        else if (tree.getChildCount() == 1) {
+        /*else if (tree.getChildCount() == 1) {
             // We've reached an inner node with a single child: we don't include this in
             // our AST.
             walk(tree.getChild(0), ast);
-        }
-        else if (tree.getChildCount() > 1) {
+        }*/
+        else if (tree.getChildCount() > 0) {
 
             for (int i = 0; i < tree.getChildCount(); i++) {
 

@@ -13,7 +13,7 @@ public class MyCVisitor {
 			break;
 			
 			//TRES CASOS DISTINTOS: FOR, WHILE Y DO WHILE			
-			case "forCondition":
+			case "iterationStatement":
 				System.out.println("CICLO: " + ast.getChildrenContent());
 			break;
 			
@@ -21,16 +21,13 @@ public class MyCVisitor {
 			case "expression": case "initDeclaratorList":
 				System.out.println("ASIGNACION/LLAMADA: " + ast.getChildrenContent());
 			break;
+		}
 		
-			default:
-				for (int i = 0; i < ast.getChildren().size(); i++) {
-	                if (!(ast.getPayload() instanceof Token)) {
-	                    //SOLO BAJAR AL HIJO SI NO ES UN TOKEN
-	                    visit(ast.getChildren().get(i));
-	                }
-	            }
-			break;
+		for (int i = 0; i < ast.getChildren().size(); i++) {
+            if (!(ast.getPayload() instanceof Token)) {
+                //SOLO BAJAR AL HIJO SI NO ES UN TOKEN
+                visit(ast.getChildren().get(i));
+            }
 		}
 	}
-	
 }
