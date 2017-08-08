@@ -5,35 +5,39 @@ import org.antlr.v4.runtime.Token;
 public class MyCVisitor {
 	
 	public void visit(AbstractSyntaxTreeConverter ast) {
-		
+		int i;
 		switch(ast.getPayload().toString()){
-		//TRES CASOS DISTINTOS: IF, SWITCH Y ?:
+			
 			case "selectionStatement":
-				//IF
-				System.out.println("CONSULTA " + ast.findChildren("expression").getChildrenContent());
-				visit(ast.findChildren("statement"));
+				/********************IF - ELSE********************/
+				System.out.println("CONSULTA " + ast.getChildren().get(ast.findChildren("expression",0)).getChildrenContent());
 				
-				//ELSE
-				for(int i=0;i<ast.getChildren().size();i++) {
+				i = ast.findChildren("statement",0);
+				visit(ast.getChildren().get(i));
+				
+				i++;
+				if(ast.getChildren().size() > i) {
+					//HAY UN ELSE
 					if(ast.getChildren().get(i).getPayload() instanceof Token){
 						
 						Token token = (Token) ast.getChildren().get(i).getPayload();
 						
 						if(token.getText().equals("else")) {
 							System.out.println("CONSULTA-ELSE ");
-							i++;
-							visit(ast.getChildren().get(i));
-							System.out.println("CONSULTA-FIN ");
+							visit(ast.getChildren().get(ast.findChildren("statement",1)));
 						}
 					}
 				}
+				
+				
+				
+				System.out.println("CONSULTA-FIN ");
 			break;
 			
-			//TRES CASOS DISTINTOS: FOR, WHILE Y DO WHILE			
 			case "iterationStatement":
-				//FOR
-				System.out.println("CICLO "+ ast.findChildren("forCondition").getChildrenContent());
-				visit(ast.findChildren("statement"));
+				/********************FOR********************/
+				System.out.println("CICLO "+ ast.getChildren().get(ast.findChildren("forCondition",0)).getChildrenContent());
+				visit(ast.getChildren().get(ast.findChildren("statement",0)));
 				System.out.println("CICLO-FIN ");
 			break;
 			
@@ -43,7 +47,7 @@ public class MyCVisitor {
 			break;
 		
 			default:
-				for (int i = 0; i < ast.getChildren().size(); i++) {
+				for (i = 0; i < ast.getChildren().size(); i++) {
 		            if (!(ast.getPayload() instanceof Token)) {
 		                //SOLO BAJAR AL HIJO SI NO ES UN TOKEN
 		                visit(ast.getChildren().get(i));

@@ -167,14 +167,18 @@ public class AbstractSyntaxTreeConverter {
 		return s;
 	}
 	
-	public AbstractSyntaxTreeConverter findChildren(String key) {
-		int i;
+	public int findChildren(String key, int repeticiones) {
+		int i, tries = 0;
 		for(i=0;i<this.getChildren().size();i++) {
 			if(this.getChildren().get(i).getPayload().toString().equals(key)) {
-				return this.getChildren().get(i);
+				if(repeticiones == tries) {
+					return i;
+				} else {
+					tries++;
+				}
 			}
 		}
 		
-		return null;
+		return 0;
 	}
 }
