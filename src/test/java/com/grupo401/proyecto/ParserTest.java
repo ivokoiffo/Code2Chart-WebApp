@@ -21,11 +21,10 @@ public class ParserTest {
 		CCompiler compiler = new CCompiler();
 		AbstractSyntaxTreeConverter ast = compiler.compile(filePreParse);
 		
-		System.out.println(ast.toString());
-		
 		MyCVisitor visitor = new MyCVisitor();
 		
-		visitor.visit(ast);
+		visitor.visit(ast,ast.getId());
 		
+		System.out.println(ast.toString());
 	}
 }

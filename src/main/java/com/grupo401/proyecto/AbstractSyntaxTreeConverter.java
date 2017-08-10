@@ -13,7 +13,8 @@ public class AbstractSyntaxTreeConverter {
      * of a leaf in the tree.
      */
     private final Object payload;
-
+    private int id = 0;
+    private int previous = 0;
     /**
      * All child nodes of this AST.
      */
@@ -131,12 +132,15 @@ public class AbstractSyntaxTreeConverter {
                 for (int i = 0; i < childListStack.size() - 1; i++) {
                     indent += (childListStack.get(i).size() > 0) ? "|  " : "   ";
                 }
-
+                
+               // if(0 != ast.previous){
                 builder.append(indent)
                         .append(childStack.isEmpty() ? "'- " : "|- ")
                         .append(caption)
+                        .append(" ID = " + ast.id)
+                        .append(" PREVIOUS = " + ast.previous)
                         .append("\n");
-
+                //}
                 if (ast.children.size() > 0) {
                     List<AbstractSyntaxTreeConverter> children = new ArrayList<>();
                     for (int i = 0; i < ast.children.size(); i++) {
@@ -180,5 +184,27 @@ public class AbstractSyntaxTreeConverter {
 		}
 		
 		return 0;
+	}
+
+	public int setID(int myID) {
+		this.id = myID;
+		
+		for(int i = 0;i<this.getChildren().size();i++){
+			myID++;
+			myID = this.getChildren().get(i).setID(myID);
+		}
+		return myID;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public int getPrevious() {
+		return previous;
+	}
+
+	public void setPrevious(int previous) {
+		this.previous = previous;
 	}
 }

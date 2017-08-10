@@ -20,6 +20,8 @@ public class CCompiler {
 			CParser.CompilationUnitContext tree = parser.compilationUnit();
 			
 			ast = new AbstractSyntaxTreeConverter(tree);
+			
+			ast.setID(0);
 
 		} catch (Exception e) {
 			new UnableToParseFileException();
