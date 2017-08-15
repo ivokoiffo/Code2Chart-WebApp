@@ -1,6 +1,7 @@
 package exceptions;
 
-public class UnableToParseFileException {
+@SuppressWarnings("serial")
+public class UnableToParseFileException extends Throwable{
 	
 	public UnableToParseFileException(){
 		System.out.println("An error ocurred. The file was not parsed");
