@@ -91,9 +91,9 @@ public class XmlBuilder {
 		return this;
 	}
 	
-	public XmlBuilder setNodeName(int idValue, String name) {
+	public XmlBuilder setNodeContent(int idValue, String content) {
 		Element node = (Element)doc.getElementsByTagName("Node").item(idValue);
-		node.setAttribute("nombre", name);
+		node.setAttribute("nombre", content);
 		return this;
 	}
 

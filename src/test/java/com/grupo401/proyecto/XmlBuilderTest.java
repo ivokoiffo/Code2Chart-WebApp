@@ -28,7 +28,7 @@ public class XmlBuilderTest {
 	
 	@Test
 	public void setNodeName(){
-		builder.setXmlStructure(2, 1).setNodeName(0, "inicio").setNodeShape(0, "decision").build();
+		builder.setXmlStructure(2, 1).setNodeContent(0, "inicio").setNodeShape(0, "decision").build();
 		
 	}
 	
