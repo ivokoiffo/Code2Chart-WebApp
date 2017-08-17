@@ -23,16 +23,17 @@ public class XmlBuilderTest {
 	
 	@Test
 	public void structureCreation(){
-		builder.setXmlStructure(2, 1);
+		builder.setXmlStructure(2, 1).build();
 	}
 	
 	@Test
 	public void setNodeName(){
-		builder.setXmlStructure(2, 1).setNodeName(0, "inicio");
+		builder.setXmlStructure(2, 1).setNodeName(0, "inicio").setNodeShape(0, "decision").build();
+		
 	}
 	
 	@Test
 	public void setNodeShape(){
-		builder.setXmlStructure(2, 1).setNodeShape(0, "decision");
+		builder.setXmlStructure(2, 1).setNodeShape(0, "decision").build();
 	}
 }

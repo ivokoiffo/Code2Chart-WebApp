@@ -5,12 +5,15 @@ import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+
+import exceptions.UnableToCreateFileException;
 
 public class XmlBuilder {
 	
@@ -63,12 +66,9 @@ public class XmlBuilder {
 		    transformerFactory = TransformerFactory.newInstance();
 		    transformer = transformerFactory.newTransformer();
 		    source = new DOMSource(doc);
-		    result = new StreamResult(new File("/home/nico/Escritorio/test.xml"));
 
 		    // Output to console for testing
 		    //StreamResult result = new StreamResult(System.out);
-
-		    transformer.transform(source, result);
 		    
 		    return this;
 		} catch (Exception e) {
@@ -108,9 +108,21 @@ public class XmlBuilder {
 		node.setAttribute("target", String.valueOf(destId));
 		return this;
 	}
+	
+	public XmlBuilder setTagLink(int idValue, String value) {
+		Element node = (Element)doc.getElementsByTagName("Link").item(idValue);
+		node.setAttribute("tagLink", String.valueOf(value));
+		return this;
+	}	
 
 	public XmlBuilder build() {
-		
+		try {
+			//todo cambiar path del file
+			result = new StreamResult(new File("/home/nico/Escritorio/test.xml"));
+			transformer.transform(source, result);
+		} catch (TransformerException e) {
+			new UnableToCreateFileException("mario");
+		}
 		return this;
 	}
 	
