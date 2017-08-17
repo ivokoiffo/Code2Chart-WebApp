@@ -15,6 +15,10 @@ public class AbstractSyntaxTreeConverter {
     private final Object payload;
     private int id = 0;
     private int previous = 0;
+    private String type;
+    private String content;
+    
+    
     /**
      * All child nodes of this AST.
      */
@@ -206,5 +210,21 @@ public class AbstractSyntaxTreeConverter {
 
 	public void setPrevious(int previous) {
 		this.previous = previous;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 }

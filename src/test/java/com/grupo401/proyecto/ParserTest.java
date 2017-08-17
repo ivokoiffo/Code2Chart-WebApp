@@ -3,6 +3,7 @@ package com.grupo401.proyecto;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.LinkedList;
 import java.util.stream.Collectors;
 
 import org.junit.Test;
@@ -10,21 +11,49 @@ import org.junit.Test;
 
 public class ParserTest {
 	
-	File file = new File("hello3.c");
-	
-	private String path = file.getAbsolutePath();
-	
 	@Test
 	public void testCompiler() throws Exception {
+		File file = new File("hello1.c");
+		String path = file.getAbsolutePath();
+		
 		String filePreParse = Files.lines(Paths.get(path)).collect(Collectors.joining());
 		
 		CCompiler compiler = new CCompiler();
 		AbstractSyntaxTreeConverter ast = compiler.compile(filePreParse);
 		
 		MyCVisitor visitor = new MyCVisitor();
+		visitor.visit(ast,-1);
 		
-		visitor.visit(ast,ast.getId());
+		ParserToXmlAdapter adapter = new ParserToXmlAdapter();
+		LinkedList<ASTContainer> list = adapter.getConvertedList(ast);
 		
-		System.out.println(ast.toString());
+		XmlBuilder builder = new XmlBuilder("xml1");
+		builder.setXmlStructure();
+		
+		list.forEach(a-> builder.appendNode(a.getId(), a.getContent(), a.getTipo()).appendLink(a.getFather(), a.getId(), ""));
+		builder.build();
+	}
+	
+	@Test
+	public void testCompiler2() throws Exception {
+		File file = new File("hello2.c");
+		String path = file.getAbsolutePath();
+		
+		String filePreParse = Files.lines(Paths.get(path)).collect(Collectors.joining());
+		
+		CCompiler compiler = new CCompiler();
+		AbstractSyntaxTreeConverter ast = compiler.compile(filePreParse);
+		
+		MyCVisitor visitor = new MyCVisitor();
+		visitor.visit(ast,-1);
+		
+		ParserToXmlAdapter adapter = new ParserToXmlAdapter();
+		LinkedList<ASTContainer> list = adapter.getConvertedList(ast);
+		
+		XmlBuilder builder = new XmlBuilder("xml2");
+		builder.setXmlStructure();
+		
+		list.forEach(a-> builder.appendNode(a.getId(), a.getContent(), a.getTipo()).appendLink(a.getFather(), a.getId(), ""));
+		builder.build();
 	}
 }

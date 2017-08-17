@@ -23,12 +23,14 @@ public class XmlBuilder {
 	private Transformer transformer;
 	private DOMSource source;
 	private StreamResult result;
+	private Element nodeElement;
+	private Element linksElement;
 
 	public XmlBuilder(String fileName){
-		this.file = new File("/tmp", fileName);
+		this.file = new File(fileName);
 	}
 	
-	public XmlBuilder setXmlStructure(int nodesNumber,int linksNumber){
+	public XmlBuilder setXmlStructure(){
 		try {
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		    DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
@@ -36,32 +38,14 @@ public class XmlBuilder {
 		    // root elements
 		    doc = docBuilder.newDocument();
 		    Element rootElement = doc.createElement("Graph");
-		    Element nodeElement = doc.createElement("Nodes");
-		    Element linksElement = doc.createElement("Links");
+		    nodeElement = doc.createElement("Nodes");
+		    linksElement = doc.createElement("Links");
 		    
 		    doc.appendChild(rootElement);
 		    rootElement.appendChild(nodeElement);
-		    // append the number of nodes depending on each diagram
-		    int i;
-		    for(i=0;i<nodesNumber;i++){
-		    	Element childNode = doc.createElement("Node");
-		    	childNode.setAttribute("id", String.valueOf(i));
-		    	childNode.setAttribute("nombre", "");
-		    	childNode.setAttribute("tipo", "");
-		    	nodeElement.appendChild(childNode);
-		    }
 		    
 		    // append the number of links depending on each diagram
 		    rootElement.appendChild(linksElement);
-		    for(i=0;i<linksNumber;i++){
-		    	Element childLink = doc.createElement("Link");
-		    	childLink.setAttribute("id", String.valueOf(i));
-		    	childLink.setAttribute("origin", "");
-		    	childLink.setAttribute("target", "");
-		    	childLink.setAttribute("tagLink", "");
-		    	linksElement.appendChild(childLink);
-		    }
-		    
 		    
 		    transformerFactory = TransformerFactory.newInstance();
 		    transformer = transformerFactory.newTransformer();
@@ -77,16 +61,25 @@ public class XmlBuilder {
 		}
 	}
 	
-	/*<Graph>
-    <Nodes>
-        <Node id="0" nombre="inicio" tipo="inicio" />*/
-
-	/*public void setNodeProperties(String nodeName,String shapeName,String nodeType) {
+	public XmlBuilder appendNode(int idValue, String shape, String content) {
+		Element node = doc.createElement("Node");
+		node.setAttribute("tipo", shape);
+		node.setAttribute("nombre", content);
+		node.setAttribute("id", String.valueOf(idValue));
 		
-	}*/
-
+		if(doc.getElementsByTagName("Node").getLength() > 0 ) {
+			Element lastNode = (Element)doc.getElementsByTagName("Node").item(doc.getElementsByTagName("Node").getLength()-1);
+			
+			lastNode.appendChild(node);
+		} else {
+			nodeElement.appendChild(node);
+		}
+		
+		return this;
+	}
+/*
 	public XmlBuilder setNodeShape(int idValue, String shape) {
-		Element node = (Element)doc.getElementsByTagName("Node").item(idValue);
+		
 		node.setAttribute("tipo", shape);
 		return this;
 	}
@@ -96,7 +89,24 @@ public class XmlBuilder {
 		node.setAttribute("nombre", name);
 		return this;
 	}
-
+*/
+	public XmlBuilder appendLink(int sourceId, int destId, String tagLink) {
+		Element childLink = doc.createElement("Link");
+    	childLink.setAttribute("origin", String.valueOf(sourceId));
+    	childLink.setAttribute("target", String.valueOf(destId));
+    	childLink.setAttribute("tagLink", tagLink);
+    	
+    	if(doc.getElementsByTagName("Link").getLength() > 0) {
+	    	Element lastLink = (Element)doc.getElementsByTagName("Link").item(doc.getElementsByTagName("Link").getLength()-1);
+			
+	    	lastLink.appendChild(childLink);
+    	} else {
+    		linksElement.appendChild(childLink);
+    	}
+    	
+		return this;
+	}
+/*
 	public XmlBuilder setLinkSourceId(int idValue, int sourceId) {
 		Element node = (Element)doc.getElementsByTagName("Link").item(idValue);
 		node.setAttribute("origin", String.valueOf(sourceId));
@@ -114,11 +124,12 @@ public class XmlBuilder {
 		node.setAttribute("tagLink", String.valueOf(value));
 		return this;
 	}	
-
+*/
+	
 	public XmlBuilder build() {
 		try {
-			//todo cambiar path del file
-			result = new StreamResult(new File("/home/nico/Escritorio/test.xml"));
+			//TODO cambiar path del file
+			result = new StreamResult(this.file);
 			transformer.transform(source, result);
 		} catch (TransformerException e) {
 			new UnableToCreateFileException("mario");

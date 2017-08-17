@@ -18,6 +18,8 @@ public class MyCVisitor {
 						System.out.println("IF " + ast.getChildren().get(ast.findChildren("expression",0)).getChildrenContent());
 						
 						ast.setPrevious(father);
+						ast.setType("decisión");
+						ast.setContent(ast.getChildren().get(ast.findChildren("expression",0)).getChildrenContent());
 						
 						i = ast.findChildren("statement",0);
 						father = visit(ast.getChildren().get(i), ast.getId());
@@ -43,6 +45,7 @@ public class MyCVisitor {
 					case "switch":
 						/********************SWITCH********************/
 						ast.setPrevious(father);
+						ast.setType("decisión");
 						
 						System.out.println("SWITCH "+ ast.getChildren().get(ast.findChildren("expression",0)).getChildrenContent());
 						
@@ -59,6 +62,8 @@ public class MyCVisitor {
 					case "while":
 						/********************WHILE********************/
 						ast.setPrevious(father);
+						ast.setType("while");
+						ast.setContent(ast.getChildren().get(ast.findChildren("expression",0)).getChildrenContent());
 						
 						System.out.println("WHILE "+ ast.getChildren().get(ast.findChildren("expression",0)).getChildrenContent());
 						father = visit(ast.getChildren().get(ast.findChildren("statement",0)),ast.getId());
@@ -68,6 +73,8 @@ public class MyCVisitor {
 					case "do":
 						/********************DO********************/
 						ast.setPrevious(father);
+						ast.setType("do");
+						ast.setContent(ast.getChildren().get(ast.findChildren("expression",0)).getChildrenContent());
 						
 						System.out.println("DO "+ ast.getChildren().get(ast.findChildren("expression",0)).getChildrenContent());
 						father = visit(ast.getChildren().get(ast.findChildren("statement",0)),ast.getId());
@@ -77,6 +84,8 @@ public class MyCVisitor {
 					case "for":
 						/********************FOR********************/
 						ast.setPrevious(father);
+						ast.setType("for");
+						ast.setContent(ast.getChildren().get(ast.findChildren("forCondition",0)).getChildrenContent());
 						
 						System.out.println("FOR "+ ast.getChildren().get(ast.findChildren("forCondition",0)).getChildrenContent());
 						father = visit(ast.getChildren().get(ast.findChildren("statement",0)),ast.getId());
@@ -88,7 +97,11 @@ public class MyCVisitor {
 			//EXPRESIONES, FUNCIONES Y ASIGNACIONES VARIAS
 			case "expression": case "initDeclaratorList":
 				System.out.println("ASIGNACION/LLAMADA "+ ast.getChildrenContent());
+				
 				ast.setPrevious(father);
+				ast.setType("declaración de variables");
+				ast.setContent(ast.getChildrenContent());
+				
 				father = ast.getId();
 			break;
 		

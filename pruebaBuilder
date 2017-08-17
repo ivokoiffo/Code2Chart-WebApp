@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<Graph>
+		<Nodes>
+			<Node id="0" nombre="inicio" tipo="decision"/>
+			<Node id="1" nombre="fin" tipo="decision"/>
+		</Nodes>
+		<Links>
+			<Link origin="0" tagLink="" target="1"/>
+		</Links>
+	</Graph>
