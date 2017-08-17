@@ -10,7 +10,7 @@ import org.junit.Test;
 
 public class ParserTest {
 	
-	File file = new File("hello.c");
+	File file = new File("hello3.c");
 	
 	private String path = file.getAbsolutePath();
 	
