@@ -15,11 +15,12 @@ public class MainController {
 		return "index";
 	}
 	
-	@RequestMapping(value="/generateDiagram", method=RequestMethod.POST)
+	@RequestMapping(value="/generateDiagram", method=RequestMethod.GET)
 	public ResponseEntity<String> generateDiagram(){
 		
 		//TODO hay que ver como vienen las cosas del front para llamar al Diagrama y devolverlo
 		//en la entity
+		//
 		return new ResponseEntity<>("diagramCreado", HttpStatus.OK);
 	}
 }
