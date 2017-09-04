@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="board">
+        <!-- Circular Tab Area -->
+        <div class="board-inner" id="status-buttons">
+            <ul class="nav nav-tabs" id="myTab">
+                <div class="liner"></div>
+                
+                <!-- circular load file icon -->
+                <li>
+                    <a ui-sref-active="active" ui-sref=".fileUpload" data-toggle="tab" title="fileUpload">
+                        <span class="round-tabs one">
+                            <i class="glyphicon glyphicon-level-up"></i>
+                        </span>
+                    </a>
+                </li>
+
+                <!-- circular configure icon -->
+                <li>
+                    <a ui-sref-active="active" ui-sref=".configure" data-toggle="tab" title="configure">
+                        <span class="round-tabs two">
+                            <i class="glyphicon glyphicon-pencil"></i>
+                        </span> 
+                    </a>
+                </li>
+
+                <!-- circular home icon -->
+                <li>
+                    <a ui-sref-active="active" ui-sref=".address" data-toggle="tab" title="address">
+                        <span class="round-tabs three">
+                            <i class="glyphicon glyphicon-ok"></i>
+                        </span>
+                    </a>
+                </li>
+                            
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <!-- End Circular Tab Area -->
+
+        <!-- Content Area -->
+        <div class="tab-content">
+            <!-- Nested view  -->
+            <div ui-view></div>
+        </div>
+        <!-- End Content Area -->
+    </div>
+
+    <!-- For Debugging: show our formData as it is being typed -->
+    <pre>{{ vm.formData | json }}</pre>
+</div>
+
