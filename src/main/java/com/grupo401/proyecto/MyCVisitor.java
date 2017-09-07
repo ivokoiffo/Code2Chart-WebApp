@@ -44,12 +44,27 @@ public class MyCVisitor {
 					
 					case "switch":
 						/********************SWITCH********************/
+						//TODO CONTROLAR, MEPA QUE ES CUALQUIERA
+						
 						ast.setPrevious(father);
-						ast.setType("decisión");
+						ast.setType("switch");
 						
 						System.out.println("SWITCH "+ ast.getChildren().get(ast.findChildren("expression",0)).getChildrenContent());
+						int j = 0;
+						int newFather = father;
 						
-						//TODO MANEJAR LOS CASE
+						while (ast.findChildren("case", j) != 0 ) {
+							AbstractSyntaxTreeConverter newAst = ast.getChildren().get(ast.findChildren("case", j));
+							
+							newAst.setPrevious(newFather);
+							newAst.setType("decisión");
+							newAst.setContent(ast.getPayload().toString() + '=' + newAst.getPayload().toString());
+							
+							father = visit(ast.getChildren().get(ast.findChildren("statement",0)),ast.getId());
+							
+							j++;
+							newFather = ast.getChildren().get(ast.findChildren("case", j)).getId();
+						}
 						
 						System.out.println("SWITCH-FIN ");
 					break;
