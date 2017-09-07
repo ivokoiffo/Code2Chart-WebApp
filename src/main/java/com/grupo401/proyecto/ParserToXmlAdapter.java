@@ -21,10 +21,12 @@ public class ParserToXmlAdapter {
 	}
 	
 	private void convert(AbstractSyntaxTreeConverter ast) {
-		if(ast.getPrevious()!=0) {
-			ASTContainer container = new ASTContainer(ast.getId(), ast.getPrevious(), ast.getType(), ast.getContent());
-			list.add(container);
-		}
+		ast.getPrevious().forEach(a -> {
+			if(a!=0) {
+				ASTContainer container = new ASTContainer(ast.getId(), a, ast.getType(), ast.getContent());
+				list.add(container);
+			}
+		});
 		ast.getChildren().forEach(c-> convert(c));
 	}
 }

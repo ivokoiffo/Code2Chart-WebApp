@@ -22,7 +22,7 @@ public class ParserTest {
 		AbstractSyntaxTreeConverter ast = compiler.compile(filePreParse);
 		
 		MyCVisitor visitor = new MyCVisitor();
-		visitor.visit(ast,-1);
+		visitor.visit(ast,null);
 		
 		ParserToXmlAdapter adapter = new ParserToXmlAdapter();
 		LinkedList<ASTContainer> list = adapter.getConvertedList(ast);
@@ -45,7 +45,7 @@ public class ParserTest {
 		AbstractSyntaxTreeConverter ast = compiler.compile(filePreParse);
 		
 		MyCVisitor visitor = new MyCVisitor();
-		visitor.visit(ast,-1);
+		visitor.visit(ast,null);
 		
 		ParserToXmlAdapter adapter = new ParserToXmlAdapter();
 		LinkedList<ASTContainer> list = adapter.getConvertedList(ast);

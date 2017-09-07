@@ -1,12 +1,18 @@
 package com.grupo401.proyecto;
 
+import java.util.LinkedList;
 import org.antlr.v4.runtime.Token;
 
 public class MyCVisitor {
 	
-	public int visit(AbstractSyntaxTreeConverter ast, int father) {
+	public LinkedList<Integer> visit(AbstractSyntaxTreeConverter ast, LinkedList<Integer> father) {
 		int i;
 		Token token = null;
+		
+		if(father == null) {
+			father = new LinkedList<Integer>();
+			father.add(-1);
+		}
 		
 		switch(ast.getPayload().toString()){
 			
@@ -22,7 +28,7 @@ public class MyCVisitor {
 						ast.setContent(ast.getChildren().get(ast.findChildren("expression",0)).getChildrenContent());
 						
 						i = ast.findChildren("statement",0);
-						father = visit(ast.getChildren().get(i), ast.getId());
+						father = visit(ast.getChildren().get(i), ast.getIdAsList());
 						
 						i++;
 						if(ast.getChildren().size() > i) {
@@ -34,7 +40,7 @@ public class MyCVisitor {
 								if(token.getText().equals("else")) {
 									
 									System.out.println("CONSULTA-ELSE ");
-									visit(ast.getChildren().get(ast.findChildren("statement",1)),ast.getId());
+									visit(ast.getChildren().get(ast.findChildren("statement",1)),ast.getIdAsList());
 								}
 							}
 						}
@@ -51,7 +57,7 @@ public class MyCVisitor {
 						
 						System.out.println("SWITCH "+ ast.getChildren().get(ast.findChildren("expression",0)).getChildrenContent());
 						int j = 0;
-						int newFather = father;
+						LinkedList<Integer> newFather = father;
 						
 						while (ast.findChildren("case", j) != 0 ) {
 							AbstractSyntaxTreeConverter newAst = ast.getChildren().get(ast.findChildren("case", j));
@@ -60,10 +66,10 @@ public class MyCVisitor {
 							newAst.setType("decisión");
 							newAst.setContent(ast.getPayload().toString() + '=' + newAst.getPayload().toString());
 							
-							father = visit(ast.getChildren().get(ast.findChildren("statement",0)),ast.getId());
+							father = visit(ast.getChildren().get(ast.findChildren("statement",0)),ast.getIdAsList());
 							
 							j++;
-							newFather = ast.getChildren().get(ast.findChildren("case", j)).getId();
+							newFather = ast.getChildren().get(ast.findChildren("case", j)).getIdAsList();
 						}
 						
 						System.out.println("SWITCH-FIN ");
@@ -81,7 +87,7 @@ public class MyCVisitor {
 						ast.setContent(ast.getChildren().get(ast.findChildren("expression",0)).getChildrenContent());
 						
 						System.out.println("WHILE "+ ast.getChildren().get(ast.findChildren("expression",0)).getChildrenContent());
-						father = visit(ast.getChildren().get(ast.findChildren("statement",0)),ast.getId());
+						father = visit(ast.getChildren().get(ast.findChildren("statement",0)),ast.getIdAsList());
 						System.out.println("WHILE-FIN ");
 					break;
 					
@@ -92,7 +98,7 @@ public class MyCVisitor {
 						ast.setContent(ast.getChildren().get(ast.findChildren("expression",0)).getChildrenContent());
 						
 						System.out.println("DO "+ ast.getChildren().get(ast.findChildren("expression",0)).getChildrenContent());
-						father = visit(ast.getChildren().get(ast.findChildren("statement",0)),ast.getId());
+						father = visit(ast.getChildren().get(ast.findChildren("statement",0)),ast.getIdAsList());
 						System.out.println("DO-FIN ");
 					break;
 					
@@ -103,7 +109,7 @@ public class MyCVisitor {
 						ast.setContent(ast.getChildren().get(ast.findChildren("forCondition",0)).getChildrenContent());
 						
 						System.out.println("FOR "+ ast.getChildren().get(ast.findChildren("forCondition",0)).getChildrenContent());
-						father = visit(ast.getChildren().get(ast.findChildren("statement",0)),ast.getId());
+						father = visit(ast.getChildren().get(ast.findChildren("statement",0)),ast.getIdAsList());
 						System.out.println("FOR-FIN ");
 					break;
 				}
@@ -117,7 +123,8 @@ public class MyCVisitor {
 				ast.setType("declaración de variables");
 				ast.setContent(ast.getChildrenContent());
 				
-				father = ast.getId();
+				father = new LinkedList<Integer>();
+				father.add(ast.getId());
 			break;
 		
 			default:
@@ -125,15 +132,14 @@ public class MyCVisitor {
 		            if (!(ast.getPayload() instanceof Token)) {
 		                
 		            	//SOLO BAJAR AL HIJO SI NO ES UN TOKEN
-		            	if(father == ast.getId()){
-		            		father = visit(ast.getChildren().get(i),ast.getId());
+		            	if(father.contains(ast.getId())){
+		            		father = visit(ast.getChildren().get(i),ast.getIdAsList());
 		            	} else {
-		            		int aux = 0;
+		            		LinkedList<Integer> aux = new LinkedList<Integer>();
 		            		aux = visit(ast.getChildren().get(i),father);
 		            		
-		            		if(aux != 0){
-		            			father = aux;
-		            		}
+		            		aux.removeIf(a -> a == 0);
+		            		father = aux;
 		            	}
 		            }
 				}

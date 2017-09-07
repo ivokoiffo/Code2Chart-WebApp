@@ -4,6 +4,7 @@ import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,7 +15,7 @@ public class AbstractSyntaxTreeConverter {
      */
     private final Object payload;
     private int id = 0;
-    private int previous = 0;
+    private LinkedList<Integer> previous = new LinkedList<Integer>();
     private String type;
     private String content;
     
@@ -203,13 +204,20 @@ public class AbstractSyntaxTreeConverter {
 	public int getId() {
 		return id;
 	}
+	
+	public LinkedList<Integer> getIdAsList(){
+		
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		list.add(this.id);
+		return list;
+	}
 
-	public int getPrevious() {
+	public LinkedList<Integer> getPrevious() {
 		return previous;
 	}
 
-	public void setPrevious(int previous) {
-		this.previous = previous;
+	public void setPrevious(LinkedList<Integer> prev) {
+		this.previous = prev;
 	}
 
 	public String getType() {
