@@ -15,15 +15,23 @@
 
 
 </head>
-<body>
-	 <!-- views will be injected here -->
+<body>    
+    <md-nav-bar md-selected-nav-item="currentNavItem">
+	  <md-nav-item md-nav-sref="home">Code2Chart</md-nav-item>
+	  <md-nav-item md-nav-sref="#" name="download">Download</md-nav-item>
+	  <md-nav-item md-nav-sref="form.fileUpload" sref-opts="{reload: true, notify: true}" name="fileUpload">
+	    Give it a try!
+	  </md-nav-item>
+	</md-nav-bar>
+ 	
+ 	 <!-- views will be injected here -->
     <section style="background:#efefe9;">
         <div class="container">
             <div data-ui-view=""></div>
         </div>
         
     </section>
- 
+    
     <!-- js libraries -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.0-rc.1/angular-ui-router.min.js"></script>
@@ -41,6 +49,9 @@
     <script src="app/form/form.component.js"></script>
     <script src="app/form/form.controller.js"></script>
     <script src="app/form/formData.value.js"></script>
+    
+    <script src="app/home/home.component.js"></script>
+    <script src="app/home/home.controller.js"></script>
  
     <!-- Wizard - fileUpload feature -->
     <script src="app/fileUpload/fileUpload.component.js"></script>

@@ -10,7 +10,7 @@
         function($stateProvider, $urlRouterProvider) {
 
             // Default for unkown URL, redirect to /form/fileUpload
-            $urlRouterProvider.otherwise('/form/fileUpload');
+            $urlRouterProvider.otherwise('/');
     
             $stateProvider
                 // PARENT STATE: form state
@@ -18,9 +18,14 @@
                     url: '/form',
                     component: 'formComponent'
                 })
-        
+                
+                .state('home',{
+                	url:'/',
+                	component: 'homeComponent'
+                })
+                
                 // NESTED STATES: child states of 'form' state 
-                // URL will become '/form/personal'
+                // URL will become '/form/fileUpload'
                 .state('form.fileUpload', {
                     url: '/fileUpload',
                     component: 'fileUploadComponent'

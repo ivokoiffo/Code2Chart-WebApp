@@ -16,7 +16,7 @@ nav.navbar ul.dropdown-menu > li > a:hover { background: #f14444; color: #fff; }
 nav.navbar span.badge { background: #f14444; font-weight: normal; font-size: 11px; margin: 0 4px; }
 nav.navbar span.badge.new { background: rgba(255, 0, 0, 0.8); color: #fff; }
 .wizard { margin: 20px auto; background: #fff; font-family: 'Raleway', sans-serif;}
-.wizard .nav-tabs {position: relative; margin:auto;padding-left:150px;margin-bottom: 0;border-bottom-color: #e0e0e0;}
+.wizard .nav-tabs {position: absolute; margin:auto;padding-left:150px;margin-bottom: 0;border-bottom-color: #e0e0e0;}
 .wizard > div.wizard-inner {position: relative;}
 .connecting-line {height: 2px; background: #e0e0e0; position: absolute; width: 40%; margin: 0 auto; left: 0; right: 0;margin-left:290px; top: 50%; z-index: 1;}
 .wizard .nav-tabs > li.active > a, .wizard .nav-tabs > li.active > a:hover, .wizard .nav-tabs > li.active > a:focus {color: #555555;cursor: default; border: 0; border-bottom-color: transparent;}
@@ -37,6 +37,7 @@ span.round-tab {
 span.round-tab i{
     color:#555555;
 	top: 20px;
+	position:fixed; 
 }
 .wizard li.active span.round-tab {
     background: #fff;
@@ -104,6 +105,7 @@ span.round-tab:hover {
 	right: 50%;
     left: 50%;
 }
+
 @media( max-width : 50px ) {
 
     .wizard {

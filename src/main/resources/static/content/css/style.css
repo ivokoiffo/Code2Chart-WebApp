@@ -79,3 +79,15 @@
   width: 100%;
 	}
 
+<!-- Home image and footer style -->    
+.home-image{
+    width: 40%;
+    padding-top: 20px;
+}
+
+.footer1{
+    font-size: 20px;
+    text-align:center;
+    font-style: oblique;
+} 
+
