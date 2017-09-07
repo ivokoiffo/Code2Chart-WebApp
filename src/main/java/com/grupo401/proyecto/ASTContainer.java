@@ -1,13 +1,15 @@
 package com.grupo401.proyecto;
 
+import java.util.LinkedList;
+
 public class ASTContainer {
 	int id;	
-	int father;
+	LinkedList<Integer> father;
 	
 	String content;
 	String tipo;
 	
-	public ASTContainer(int id, int father, String content, String tipo) {
+	public ASTContainer(int id, LinkedList<Integer> father, String content, String tipo) {
 		this.id = id;
 		this.father = father;
 		this.content = content;
@@ -18,7 +20,7 @@ public class ASTContainer {
 		return id;
 	}
 	
-	public int getFather() {
+	public LinkedList<Integer> getFather() {
 		return father;
 	}
 	

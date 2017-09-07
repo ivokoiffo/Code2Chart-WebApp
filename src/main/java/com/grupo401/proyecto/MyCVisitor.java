@@ -11,7 +11,7 @@ public class MyCVisitor {
 		
 		if(father == null) {
 			father = new LinkedList<Integer>();
-			father.add(-1);
+			father.add(0);
 		}
 		
 		switch(ast.getPayload().toString()){
@@ -40,7 +40,7 @@ public class MyCVisitor {
 								if(token.getText().equals("else")) {
 									
 									System.out.println("CONSULTA-ELSE ");
-									visit(ast.getChildren().get(ast.findChildren("statement",1)),ast.getIdAsList());
+									father.addAll(visit(ast.getChildren().get(ast.findChildren("statement",1)),ast.getIdAsList()));
 								}
 							}
 						}
@@ -138,7 +138,6 @@ public class MyCVisitor {
 		            		LinkedList<Integer> aux = new LinkedList<Integer>();
 		            		aux = visit(ast.getChildren().get(i),father);
 		            		
-		            		aux.removeIf(a -> a == 0);
 		            		father = aux;
 		            	}
 		            }

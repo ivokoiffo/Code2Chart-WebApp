@@ -217,7 +217,7 @@ public class AbstractSyntaxTreeConverter {
 	}
 
 	public void setPrevious(LinkedList<Integer> prev) {
-		this.previous = prev;
+		this.previous.addAll(prev);
 	}
 
 	public String getType() {

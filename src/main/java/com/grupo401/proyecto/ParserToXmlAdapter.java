@@ -9,24 +9,24 @@ public class ParserToXmlAdapter {
 		list = new LinkedList<>();
 	}
 	public LinkedList<ASTContainer> getConvertedList(AbstractSyntaxTreeConverter ast){
+		LinkedList<Integer> astCont = new LinkedList<Integer>();
 		
-		ASTContainer cont = new ASTContainer(-1, 0, "Inicio", "inicio");
+		ASTContainer cont = new ASTContainer(-1, null, "Inicio", "inicio");
 		list.add(cont);
 		convert(ast);
 		
-		cont = new ASTContainer(list.getLast().getId()+1, list.getLast().getId(), "Fin", "fin");
+		astCont.add(list.getLast().getId());
+		cont = new ASTContainer(list.getLast().getId()+1, astCont, "Fin", "fin");
 		list.add(cont);
 		
 		return list;
 	}
 	
 	private void convert(AbstractSyntaxTreeConverter ast) {
-		ast.getPrevious().forEach(a -> {
-			if(a!=0) {
-				ASTContainer container = new ASTContainer(ast.getId(), a, ast.getType(), ast.getContent());
-				list.add(container);
-			}
-		});
+		if(ast.getType() != null) {
+			ASTContainer container = new ASTContainer(ast.getId(), ast.getPrevious(), ast.getType(), ast.getContent());
+			list.add(container);
+		}
 		ast.getChildren().forEach(c-> convert(c));
 	}
 }

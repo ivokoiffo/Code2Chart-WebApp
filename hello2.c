@@ -17,4 +17,5 @@ int main()
 			printf("Goodbye World");
 		}
 	}
+	i--;
 }
