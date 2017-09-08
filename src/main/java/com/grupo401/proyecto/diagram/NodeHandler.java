@@ -16,7 +16,7 @@ public class NodeHandler {
 		        	diagramaNodo.setShape(Shape.fromId("Rectangle"));
 		        break;
 		        case "inicio":
-		        	diagramaNodo.setShape(Shape.fromId("Terminator"));
+		        	diagramaNodo.setShape(Shape.fromId("Start"));
 		        break;
 	
 		        case "decision":

@@ -23,13 +23,8 @@ import com.mindfusion.diagramming.*;
 
 public class MyDiagram extends JFrame
 {
-	public static void main(String[] args)
-	{
-		MyDiagram mainFrame = new MyDiagram();
-		mainFrame.setVisible(true);
-	}
 
-	public MyDiagram()
+	public MyDiagram(String xmlPath)
 	{
 		super("Graficar desde un XML");
 
@@ -52,7 +47,7 @@ public class MyDiagram extends JFrame
 			@Override
 			public void windowOpened(WindowEvent e)
 			{
-				loadGraph(diagram, "./src/diagrama.xml");
+				loadGraph(diagram, xmlPath);
 
 				HtmlBuilder creador = new HtmlBuilder(diagram);
 				try {
