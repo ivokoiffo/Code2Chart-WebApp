@@ -12,7 +12,7 @@ public class XmlBuilderTest {
 	
 	@Before
 	public void setUp(){
-		this.fileName = "pruebaBuilder";
+		this.fileName = "xml3";
 		this.builder = new XmlBuilder(fileName);
 	}
 	

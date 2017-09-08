@@ -1,6 +1,7 @@
 package com.grupo401.proyecto;
 
 import java.io.File;
+import java.util.LinkedList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -90,20 +91,23 @@ public class XmlBuilder {
 		return this;
 	}
 */
-	public XmlBuilder appendLink(int sourceId, int destId, String tagLink) {
-		Element childLink = doc.createElement("Link");
-    	childLink.setAttribute("origin", String.valueOf(sourceId));
-    	childLink.setAttribute("target", String.valueOf(destId));
-    	childLink.setAttribute("tagLink", tagLink);
-    	
-    	if(doc.getElementsByTagName("Link").getLength() > 0) {
-	    	Element lastLink = (Element)doc.getElementsByTagName("Link").item(doc.getElementsByTagName("Link").getLength()-1);
-			
-	    	lastLink.appendChild(childLink);
-    	} else {
-    		linksElement.appendChild(childLink);
-    	}
-    	
+	public XmlBuilder appendLink(LinkedList<Integer> source, int destId, String tagLink) {
+		if(source == null) return this;
+		
+		source.forEach(sourceId -> {
+			Element childLink = doc.createElement("Link");
+	    	childLink.setAttribute("origin", String.valueOf(sourceId));
+	    	childLink.setAttribute("target", String.valueOf(destId));
+	    	childLink.setAttribute("tagLink", tagLink);
+	    	
+	    	if(doc.getElementsByTagName("Link").getLength() > 0) {
+		    	Element lastLink = (Element)doc.getElementsByTagName("Link").item(doc.getElementsByTagName("Link").getLength()-1);
+				
+		    	lastLink.appendChild(childLink);
+	    	} else {
+	    		linksElement.appendChild(childLink);
+	    	}
+		});
 		return this;
 	}
 /*
