@@ -81,8 +81,9 @@
 
 <!-- Home image and footer style -->    
 .home-image{
-    width: 40%;
-    padding-top: 20px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 40px;
 }
 
 .footer1{
