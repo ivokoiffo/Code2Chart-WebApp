@@ -43,6 +43,9 @@ public class MyCVisitor {
 									father.addAll(visit(ast.getChildren().get(ast.findChildren("statement",1)),ast.getIdAsList()));
 								}
 							}
+						} else {
+							System.out.println("CONSULTA-SIN-ELSE ");
+							father.add(ast.getId());
 						}
 						System.out.println("IF-FIN ");
 						
