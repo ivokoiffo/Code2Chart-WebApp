@@ -12,14 +12,14 @@ public class NodeHandler {
 	public void conversor(Element nodo,ShapeNode diagramaNodo) {
 		String tipo = nodo.getAttribute("tipo");
 		switch (tipo) {
-			 	case "Proceso":
+			 	case "proceso":
 		        	diagramaNodo.setShape(Shape.fromId("Rectangle"));
 		        break;
-		        case "Inicio":
+		        case "inicio":
 		        	diagramaNodo.setShape(Shape.fromId("Start"));
 		        break;
 	
-		        case "Decision":
+		        case "decisión":
 	
 		        	diagramaNodo.setShape(Shape.fromId("Decision"));
 					diagramaNodo.setAnchorPattern(AnchorPattern.fromId("Decision2In2Out"));
@@ -27,7 +27,7 @@ public class NodeHandler {
 
 			    break;
 			    
-		        case "Fin":
+		        case "fin":
 		        	diagramaNodo.setShape(Shape.fromId("Terminator"));
 		        break;
 		        

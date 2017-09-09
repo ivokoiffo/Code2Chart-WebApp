@@ -24,12 +24,17 @@ import com.mindfusion.diagramming.*;
 public class MyDiagram extends JFrame
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public MyDiagram(String xmlPath)
 	{
-		super("Graficar desde un XML");
+		super("Diagrama de flujo");
 
 		// set up the main window
-		setBounds(0, 0, 800, 550);
+		setBounds(0, 0, 400, 250);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		// create diagram and view 
@@ -41,7 +46,20 @@ public class MyDiagram extends JFrame
 		JScrollPane scrollPane = new JScrollPane(view);
 		scrollPane.setVisible(true);
 		getContentPane().add(scrollPane);
+		
+		//TEST, DELETE LATER
+		loadGraph(diagram, xmlPath);
 
+		HtmlBuilder creador = new HtmlBuilder(diagram);
+		try {
+			String text = creador.createImageHtml("index.html","Code2Chart","diagrama.png", "diagrama.png", "png");
+			System.out.println(text);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		//ENDTEST
+		
 		this.addWindowListener(new WindowAdapter()
 		{
 			@Override
@@ -51,7 +69,7 @@ public class MyDiagram extends JFrame
 
 				HtmlBuilder creador = new HtmlBuilder(diagram);
 				try {
-					String text = creador.createImageHtml("index.html","Code2Chart","./diagrama.png", "./diagrama.png", "png");
+					String text = creador.createImageHtml("index.html","Code2Chart","diagrama.png", "diagrama.png", "png");
 					System.out.println(text);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
@@ -97,6 +115,7 @@ public class MyDiagram extends JFrame
 			manejador.conversor(node,diagramNode);
 			String idNodo = node.getAttribute("id");
 			nodeMap.put(idNodo, diagramNode);
+			
 			diagramNode.setText(idNodo);
 			diagramNode.setText(node.getAttribute("nombre"));
 			//Clave para que se vea bien el texto dentro del nodo

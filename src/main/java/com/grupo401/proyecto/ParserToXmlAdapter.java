@@ -11,12 +11,12 @@ public class ParserToXmlAdapter {
 	public LinkedList<ASTContainer> getConvertedList(AbstractSyntaxTreeConverter ast){
 		LinkedList<Integer> astCont = new LinkedList<Integer>();
 		
-		ASTContainer cont = new ASTContainer(0, null, "Inicio", "inicio");
+		ASTContainer cont = new ASTContainer(0, null, "inicio", "Inicio");
 		list.add(cont);
 		convert(ast);
 		
 		astCont.add(list.getLast().getId());
-		cont = new ASTContainer(list.getLast().getId()+1, astCont, "Fin", "fin");
+		cont = new ASTContainer(list.getLast().getId()+1, astCont, "fin", "Fin");
 		list.add(cont);
 		
 		return list;

@@ -120,7 +120,7 @@ public class MyCVisitor {
 				System.out.println("ASIGNACION/LLAMADA "+ ast.getChildrenContent());
 				
 				ast.setPrevious(father);
-				ast.setType("declaración de variables");
+				ast.setType("proceso");
 				ast.setContent(ast.getChildrenContent());
 				
 				father = new LinkedList<Integer>();
