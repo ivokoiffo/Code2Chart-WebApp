@@ -11,7 +11,7 @@ public class ParserToXmlAdapter {
 	public LinkedList<ASTContainer> getConvertedList(AbstractSyntaxTreeConverter ast){
 		LinkedList<Integer> astCont = new LinkedList<Integer>();
 		
-		ASTContainer cont = new ASTContainer(-1, null, "Inicio", "inicio");
+		ASTContainer cont = new ASTContainer(0, null, "Inicio", "inicio");
 		list.add(cont);
 		convert(ast);
 		

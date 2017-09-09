@@ -37,9 +37,6 @@ public class ParserTest {
 		
 		MyDiagram mainFrame = new MyDiagram(builder.getFile().getAbsolutePath());
 		mainFrame.setVisible(true);
-		
-
-		File file22 = new File("hello1.c");
 	}
 	
 	@Test
@@ -63,5 +60,11 @@ public class ParserTest {
 		
 		list.forEach(a-> builder.appendNode(a.getId(), a.getContent(), a.getTipo()).appendLink(a.getFather(), a.getId(), ""));
 		builder.build();
+		
+		MyDiagram mainFrame = new MyDiagram(builder.getFile().getAbsolutePath());
+		mainFrame.setVisible(true);
+		
+		File asd = new File("asd");
+		asd.getAbsolutePath();
 	}
 }

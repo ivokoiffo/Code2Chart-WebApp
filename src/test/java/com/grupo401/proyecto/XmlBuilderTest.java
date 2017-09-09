@@ -2,6 +2,8 @@ package com.grupo401.proyecto;
 
 import static org.junit.Assert.*;
 
+import java.util.LinkedList;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -33,6 +35,9 @@ public class XmlBuilderTest {
 	
 	@Test
 	public void appendLink(){
-		builder.setXmlStructure().appendNode(0, "decision", "inicio").appendNode(1, "decision", "fin").appendLink(0, 1, "").build();
+		LinkedList<Integer> end = new LinkedList<Integer>();
+		end.add(0);
+		
+		builder.setXmlStructure().appendNode(0, "decision", "inicio").appendNode(1, "decision", "fin").appendLink(end, 1, "").build();
 	}
 }
