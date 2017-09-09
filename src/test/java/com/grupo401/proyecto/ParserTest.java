@@ -58,7 +58,14 @@ public class ParserTest {
 		XmlBuilder builder = new XmlBuilder("xml2");
 		builder.setXmlStructure();
 		
-		list.forEach(a-> builder.appendNode(a.getId(), a.getContent(), a.getTipo()).appendLink(a.getFather(), a.getId(), ""));
+		list.forEach(a-> {
+			builder.appendNode(a.getId(), a.getTipo(), a.getContent());
+			if (a.getTipo() == "decisión") {
+				builder.appendLink(a.getFather(), a.getId(), "decisión");
+			} else {
+				builder.appendLink(a.getFather(), a.getId(), "");
+			}
+		});
 		builder.build();
 		
 		MyDiagram mainFrame = new MyDiagram(builder.getFile().getAbsolutePath());

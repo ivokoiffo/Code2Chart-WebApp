@@ -2,6 +2,7 @@ package com.grupo401.proyecto;
 
 import java.io.File;
 import java.util.LinkedList;
+import java.util.Random;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -95,10 +96,21 @@ public class XmlBuilder {
 		if(source == null) return this;
 		
 		source.forEach(sourceId -> {
+			
 			Element childLink = doc.createElement("Link");
 	    	childLink.setAttribute("origin", String.valueOf(sourceId));
 	    	childLink.setAttribute("target", String.valueOf(destId));
-	    	childLink.setAttribute("tagLink", tagLink);
+	    	
+	    	if (tagLink == "decisión") {
+	    		if(source.indexOf(sourceId) == 0) {
+	    			childLink.setAttribute("tagLink", "true");
+	    			
+	    		} else if(source.indexOf(sourceId) == 1) {
+	    			childLink.setAttribute("tagLink", "false");
+	    		}
+	    		
+	    	}
+	    	
 	    	
 	    	if(doc.getElementsByTagName("Link").getLength() > 0) {
 		    	Element lastLink = (Element)doc.getElementsByTagName("Link").item(doc.getElementsByTagName("Link").getLength()-1);

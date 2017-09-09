@@ -19,7 +19,14 @@ public class CCompiler {
 			
 			CParser.CompilationUnitContext tree = parser.compilationUnit();
 			
-			ast = new AbstractSyntaxTreeConverter(tree);
+			ast = new AbstractSyntaxTreeConverter("FullAst");
+			AbstractSyntaxTreeConverter beginAst = new AbstractSyntaxTreeConverter("inicio");
+			AbstractSyntaxTreeConverter codeAst = new AbstractSyntaxTreeConverter(tree);
+			AbstractSyntaxTreeConverter endAst = new AbstractSyntaxTreeConverter("fin");
+			
+			ast.addChildren(beginAst);
+			ast.addChildren(codeAst);
+			ast.addChildren(endAst);
 			
 			ast.setID(0);
 

@@ -15,6 +15,23 @@ public class MyCVisitor {
 		}
 		
 		switch(ast.getPayload().toString()){
+			case "inicio":
+				ast.setPrevious(father);
+				ast.setType("inicio");
+				ast.setContent("Inicio");
+				
+				father = new LinkedList<Integer>();
+				father.add(ast.getId());
+			break;
+			
+			case "fin":
+				ast.setPrevious(father);
+				ast.setType("fin");
+				ast.setContent("Fin");
+				
+				father = new LinkedList<Integer>();
+				father.add(ast.getId());
+			break;
 			
 			case "selectionStatement":
 				token = (Token) ast.getChildren().get(0).getPayload();

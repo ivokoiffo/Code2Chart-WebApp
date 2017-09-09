@@ -34,7 +34,7 @@ public class MyDiagram extends JFrame
 		super("Diagrama de flujo");
 
 		// set up the main window
-		setBounds(0, 0, 400, 250);
+		setBounds(0, 0, 600, 600);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		// create diagram and view 
@@ -59,7 +59,7 @@ public class MyDiagram extends JFrame
 			e1.printStackTrace();
 		}
 		//ENDTEST
-		
+		/*
 		this.addWindowListener(new WindowAdapter()
 		{
 			@Override
@@ -76,7 +76,7 @@ public class MyDiagram extends JFrame
 					e1.printStackTrace();
 				}
 			}
-		});
+		});*/
 	}
 	void loadGraph(Diagram diagram, String filepath)
 	{
@@ -101,7 +101,7 @@ public class MyDiagram extends JFrame
 			//nuevocodigo
 			String tipo = node.getAttribute("tipo");
 			switch (tipo) {
-			case "decision":
+			case "decisión":
 				nodosDecision.add(node.getAttribute("id"));
 		 		break;
 		 	

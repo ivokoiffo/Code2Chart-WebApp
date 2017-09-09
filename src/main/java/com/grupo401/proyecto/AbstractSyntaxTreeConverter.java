@@ -19,12 +19,22 @@ public class AbstractSyntaxTreeConverter {
     private String type;
     private String content;
     
-    
     /**
      * All child nodes of this AST.
      */
     private final List<AbstractSyntaxTreeConverter> children;
-
+    
+//PARA AGREGAR UN NODO INICIO Y UN NODO FIN
+    public AbstractSyntaxTreeConverter(String token) {
+        this.payload = token;
+        this.children = new LinkedList<>();
+    }
+    
+    public void addChildren(AbstractSyntaxTreeConverter ast) {
+    	this.children.add(ast);
+    }
+//END    
+    
     public AbstractSyntaxTreeConverter(ParseTree tree) {
         this(null, tree);
     }
