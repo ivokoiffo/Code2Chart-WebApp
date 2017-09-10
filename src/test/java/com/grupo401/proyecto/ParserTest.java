@@ -14,7 +14,7 @@ import com.grupo401.proyecto.diagram.MyDiagram;
 public class ParserTest {
 	
 	@Test
-	public void testCompiler() throws Exception {
+	public void testCompiler1() throws Exception {
 		File file = new File("hello1.c");
 		String path = file.getAbsolutePath();
 		
@@ -32,10 +32,10 @@ public class ParserTest {
 		XmlBuilder builder = new XmlBuilder("xml1");
 		builder.setXmlStructure();
 		
-		list.forEach(a-> builder.appendNode(a.getId(), a.getContent(), a.getTipo()).appendLink(a.getFather(), a.getId(), ""));
+		list.forEach(a-> builder.appendNode(a.getId(), a.getTipo(), a.getContent()).appendLink(a.getFather(), a.getId(), ""));
 		builder.build();
 		
-		MyDiagram mainFrame = new MyDiagram(builder.getFile().getAbsolutePath());
+		MyDiagram mainFrame = new MyDiagram(builder.getFile().getAbsolutePath(), "diagrama1.png");
 		mainFrame.setVisible(true);
 	}
 	
@@ -68,10 +68,42 @@ public class ParserTest {
 		});
 		builder.build();
 		
-		MyDiagram mainFrame = new MyDiagram(builder.getFile().getAbsolutePath());
+		MyDiagram mainFrame = new MyDiagram(builder.getFile().getAbsolutePath(), "diagrama2.png");
 		mainFrame.setVisible(true);
+	}
+	
+	@Test
+	public void testCompiler3() throws Exception {
+		File file = new File("hello3.c");
+		String path = file.getAbsolutePath();
 		
-		File asd = new File("asd");
-		asd.getAbsolutePath();
+		String filePreParse = Files.lines(Paths.get(path)).collect(Collectors.joining());
+		
+		CCompiler compiler = new CCompiler();
+		AbstractSyntaxTreeConverter ast = compiler.compile(filePreParse);
+
+		System.out.println(ast.toString());
+		
+		MyCVisitor visitor = new MyCVisitor();
+		visitor.visit(ast,null);
+		
+		ParserToXmlAdapter adapter = new ParserToXmlAdapter();
+		LinkedList<ASTContainer> list = adapter.getConvertedList(ast);
+		
+		XmlBuilder builder = new XmlBuilder("xml3");
+		builder.setXmlStructure();
+		
+		list.forEach(a-> {
+			builder.appendNode(a.getId(), a.getTipo(), a.getContent());
+			if (a.getTipo() == "decisión") {
+				builder.appendLink(a.getFather(), a.getId(), "decisión");
+			} else {
+				builder.appendLink(a.getFather(), a.getId(), "");
+			}
+		});
+		builder.build();
+		
+		MyDiagram mainFrame = new MyDiagram(builder.getFile().getAbsolutePath(), "diagrama3.png");
+		mainFrame.setVisible(true);
 	}
 }

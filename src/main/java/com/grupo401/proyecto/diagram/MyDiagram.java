@@ -1,6 +1,5 @@
 package com.grupo401.proyecto.diagram;
  
-import java.awt.event.*;
 import java.awt.geom.*;
 import java.io.*;
 import java.util.*;
@@ -29,7 +28,7 @@ public class MyDiagram extends JFrame
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public MyDiagram(String xmlPath)
+	public MyDiagram(String xmlPath, String diagramPath)
 	{
 		super("Diagrama de flujo");
 
@@ -52,10 +51,10 @@ public class MyDiagram extends JFrame
 
 		HtmlBuilder creador = new HtmlBuilder(diagram);
 		try {
-			String text = creador.createImageHtml("index.html","Code2Chart","diagrama.png", "diagrama.png", "png");
-			System.out.println(text);
+			//String text = 
+			creador.createImageHtml("index.html", "Code2Chart", diagramPath, "diagrama.png", "png");
+			//System.out.println(text);
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		//ENDTEST
@@ -72,7 +71,6 @@ public class MyDiagram extends JFrame
 					String text = creador.createImageHtml("index.html","Code2Chart","diagrama.png", "diagrama.png", "png");
 					System.out.println(text);
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
