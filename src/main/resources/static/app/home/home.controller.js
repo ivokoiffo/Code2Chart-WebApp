@@ -8,14 +8,5 @@
     homeController.$inject = ['$scope'];
  
     function homeController($scope) {
-        var vm = this;
-        
-        $scope.navItems = [
-  	      {value: "/", label: "Code2Chart"},
-  	      {value: "/descargar", label: "Descargar"},
-  	      {value: "/fileUpload", label: "Usar Online"},
-  	    ];
-  	
-        $scope.currentNavItem = "/";
     }
 })();

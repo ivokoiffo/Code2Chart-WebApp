@@ -19,10 +19,11 @@
 	<div layout="row" flex="">
 	    <md-nav-bar md-selected-nav-item="currentNavItem">
 		  <md-nav-item md-nav-sref="home">Code2Chart</md-nav-item>
-		  <md-nav-item md-nav-sref="#" name="download">Download</md-nav-item>
-		  <md-nav-item md-nav-sref="form.fileUpload" sref-opts="{reload: true, notify: true}" name="fileUpload">
+		  <md-nav-item md-nav-sref="#">Download</md-nav-item>
+		  <md-nav-item md-nav-sref="form.fileUpload" sref-opts="{reload: true, notify: true}">
 		    Give it a try!
 		  </md-nav-item>
+		  <md-nav-item md-nav-sref="about">About us</md-nav-item>
 		</md-nav-bar>
 	</div>    
  	
@@ -52,8 +53,13 @@
     <script src="app/form/form.controller.js"></script>
     <script src="app/form/formData.value.js"></script>
     
+    <!-- Homepage -->
     <script src="app/home/home.component.js"></script>
     <script src="app/home/home.controller.js"></script>
+ 
+    <!-- Homepage -->
+    <script src="app/about/about.component.js"></script>
+    <script src="app/about/about.controller.js"></script>
  
     <!-- Wizard - fileUpload feature -->
     <script src="app/fileUpload/fileUpload.component.js"></script>

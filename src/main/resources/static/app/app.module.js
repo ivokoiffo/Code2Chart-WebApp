@@ -24,6 +24,11 @@
                 	component: 'homeComponent'
                 })
                 
+                .state('about',{
+                	url:'/about',
+                	component: 'aboutComponent'
+                })
+                
                 // NESTED STATES: child states of 'form' state 
                 // URL will become '/form/fileUpload'
                 .state('form.fileUpload', {

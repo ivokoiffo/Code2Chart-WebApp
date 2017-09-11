@@ -1,0 +1,24 @@
+<div ng-controller="aboutController">
+<div layout="row" layout-align="center center">
+  <h2 class="md-primary">El equipo de Code2Chart</h2>
+</div>
+<md-content layout="row" layout-align="space-around center" layout-wrap layout-sm="column">
+  	
+  	<div ng-repeat="member in team">
+	<md-card md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch>
+	  <md-card-title>
+	    <md-card-title-text>
+	      <span class="md-headline" >{{member.name}}</span>
+	      <span class="md-subhead">{{member.age}}</span>
+	    </md-card-title-text>
+	    <md-card-title-media>
+	      <div class="md-media-sm card-media"></div>
+	    </md-card-title-media>
+	  </md-card-title>
+	  <md-card-actions layout="row" layout-align="end center">
+	    <md-button>Show more</md-button>
+	  </md-card-actions>
+	</md-card>
+	</div>
+</md-content>
+</div>
