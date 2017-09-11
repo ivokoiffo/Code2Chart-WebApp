@@ -70,27 +70,11 @@ public class MyCVisitor {
 					
 					case "switch":
 						/********************SWITCH********************/
-						//TODO CONTROLAR, MEPA QUE ES CUALQUIERA
-						
-						ast.setPrevious(father);
-						ast.setType("switch");
 						
 						System.out.println("SWITCH "+ ast.getChildren().get(ast.findChildren("expression",0)).getChildrenContent());
-						int j = 0;
-						LinkedList<Integer> newFather = father;
 						
-						while (ast.findChildren("case", j) != 0 ) {
-							AbstractSyntaxTreeConverter newAst = ast.getChildren().get(ast.findChildren("case", j));
-							
-							newAst.setPrevious(newFather);
-							newAst.setType("decisión");
-							newAst.setContent(ast.getPayload().toString() + '=' + newAst.getPayload().toString());
-							
-							father = visit(ast.getChildren().get(ast.findChildren("statement",0)),ast.getIdAsList());
-							
-							j++;
-							newFather = ast.getChildren().get(ast.findChildren("case", j)).getIdAsList();
-						}
+						String expression = ast.getChildren().get(ast.findChildren("expression",0)).getChildrenContent();
+						father = caseVisit(ast, father, expression);
 						
 						System.out.println("SWITCH-FIN ");
 					break;
@@ -167,4 +151,48 @@ public class MyCVisitor {
 		}
 		return father;
 	}
+	
+	public LinkedList<Integer> caseVisit(AbstractSyntaxTreeConverter ast, LinkedList<Integer> father, String expression) {
+		
+		int childrenNo = 0;
+		AbstractSyntaxTreeConverter caseChildren = null;
+		int i;
+		
+        if (!(ast.getPayload() instanceof Token)) {
+        	childrenNo = ast.findChildren("labeledStatement", 0);
+    		
+    		if(!ast.getChildren().get(childrenNo).getPayload().toString().equals("labeledStatement")) {
+    			for (i = 0; i < ast.getChildren().size(); i++) {
+	            	//SOLO BAJAR AL HIJO SI NO ES UN TOKEN
+	            	if(father.contains(ast.getId())){
+	            		father = caseVisit(ast.getChildren().get(i),ast.getIdAsList(), expression);
+	            	} else {
+	            		LinkedList<Integer> aux = new LinkedList<Integer>();
+	            		aux = caseVisit(ast.getChildren().get(i),father, expression);
+	            		
+	            		father = aux;
+	            	}
+    			}
+            } else {
+    			caseChildren = ast.getChildren().get(childrenNo);
+    			
+    			caseChildren.setPrevious(father);
+    			caseChildren.setType("decisión");
+    			String condition = caseChildren.getChildren().get(caseChildren.findChildren("constantExpression",0)).getChildrenContent();
+    			if(condition.isEmpty()) {
+    				caseChildren.setContent("true");
+    			} else {
+    				caseChildren.setContent(expression + " = " + caseChildren.getChildren().get(caseChildren.findChildren("constantExpression",0)).getChildrenContent());
+    			}
+    			
+    			
+    			father = visit(caseChildren.getChildren().get(caseChildren.findChildren("statement",0)), caseChildren.getIdAsList());
+    			father.add(caseChildren.getId());
+    			}
+        }
+		
+		return father;
+	}
+	
+	
 }

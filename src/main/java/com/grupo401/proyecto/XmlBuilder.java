@@ -2,7 +2,6 @@ package com.grupo401.proyecto;
 
 import java.io.File;
 import java.util.LinkedList;
-import java.util.Random;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
