@@ -5,9 +5,24 @@
         .module('code2chart')
         .controller('aboutController', aboutController);
  
-    aboutController.$inject = ['$scope'];
+    aboutController.$inject = ['$scope','$mdDialog'];
  
-    function aboutController($scope) {
+    function aboutController($scope,$mdDialog) {
+    	
+    	$scope.openFromLeft = function() {
+    		$mdDialog.show(
+    			$mdDialog.alert()
+    			.clickOutsideToClose(true)
+		        .title('Additional Information')
+		        .textContent('Closing to the right!')
+		        .ariaLabel('Left to right demo')
+		        .ok('Nice!')
+		        // You can specify either sting with query selector
+		        .openFrom('#left')
+		        // or an element
+		        .closeTo(angular.element(document.querySelector('#right')))
+    		);
+    	};
     	
     	function Person (fullname,age,bio){
     		    this.name = fullname;

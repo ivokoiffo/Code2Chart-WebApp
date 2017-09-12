@@ -1,3 +1,4 @@
+<div ng-controller='fileUploadController'>
 <div class="tab-pane fade in active">
     <h4 class="head text-center">{{vm.title}}</h4>
     <br/>  
@@ -5,7 +6,8 @@
         <div class='col-sm-10 col-xs-offset-1 col-xs-10'>
             <div layout="row" flex>
   				<md-input-container class="example-full-width">
-    				<input data-mdInput placeholder="Enter your Github file URL">
+    				<input data-mdInput ng-model='vm.formData.githubUrl'
+    				 placeholder="Enter your Github file URL">
  				</md-input-container>
  				<div>
  					<md-button class="md-raised">
@@ -27,6 +29,6 @@
         </div>
     </div>
 </div>
-
+</div>
 
  
