@@ -14,6 +14,10 @@ public class MyCVisitor {
 			father.add(0);
 		}
 		
+		if(father.size()==4){
+			father.size();
+		}
+		
 		switch(ast.getPayload().toString()){
 			case "inicio":
 				ast.setPrevious(father);
@@ -70,11 +74,14 @@ public class MyCVisitor {
 					
 					case "switch":
 						/********************SWITCH********************/
+						LinkedList<Integer> parentsFromTrueSide = new LinkedList<>();
 						
 						System.out.println("SWITCH "+ ast.getChildren().get(ast.findChildren("expression",0)).getChildrenContent());
 						
 						String expression = ast.getChildren().get(ast.findChildren("expression",0)).getChildrenContent();
-						father = caseVisit(ast, father, expression);
+						father = caseVisit(ast, father,parentsFromTrueSide, expression);
+						
+						father.addAll(parentsFromTrueSide);
 						
 						System.out.println("SWITCH-FIN ");
 					break;
@@ -152,7 +159,7 @@ public class MyCVisitor {
 		return father;
 	}
 	
-	public LinkedList<Integer> caseVisit(AbstractSyntaxTreeConverter ast, LinkedList<Integer> father, String expression) {
+	public LinkedList<Integer> caseVisit(AbstractSyntaxTreeConverter ast, LinkedList<Integer> father,LinkedList<Integer> parentsFromTrueSide, String expression) {
 		
 		int childrenNo = 0;
 		AbstractSyntaxTreeConverter caseChildren = null;
@@ -165,10 +172,10 @@ public class MyCVisitor {
     			for (i = 0; i < ast.getChildren().size(); i++) {
 	            	//SOLO BAJAR AL HIJO SI NO ES UN TOKEN
 	            	if(father.contains(ast.getId())){
-	            		father = caseVisit(ast.getChildren().get(i),ast.getIdAsList(), expression);
+	            		father = caseVisit(ast.getChildren().get(i),ast.getIdAsList(),parentsFromTrueSide, expression);
 	            	} else {
 	            		LinkedList<Integer> aux = new LinkedList<Integer>();
-	            		aux = caseVisit(ast.getChildren().get(i),father, expression);
+	            		aux = caseVisit(ast.getChildren().get(i),father, parentsFromTrueSide,expression);
 	            		
 	            		father = aux;
 	            	}
@@ -186,7 +193,9 @@ public class MyCVisitor {
     			}
     			
     			
-    			father = visit(caseChildren.getChildren().get(caseChildren.findChildren("statement",0)), caseChildren.getIdAsList());
+    			parentsFromTrueSide.addAll(visit(caseChildren.getChildren().get(caseChildren.findChildren("statement",0)), caseChildren.getIdAsList()));
+    			
+    			father = new LinkedList<Integer>();
     			father.add(caseChildren.getId());
     			}
         }
