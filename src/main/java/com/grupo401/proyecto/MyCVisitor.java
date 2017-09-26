@@ -90,40 +90,54 @@ public class MyCVisitor {
 			
 			case "iterationStatement":
 				token = (Token) ast.getChildren().get(0).getPayload();
+				
+				AbstractSyntaxTreeConverter finBucle = new AbstractSyntaxTreeConverter("finBucle"+ast.getId());
+				ast.addChildren(finBucle);
+				
+				finBucle.setType("finBucle"+ast.getId());
+				finBucle.setID(ast.getId()+1);
+				
 				switch(token.getText()){
 					case "while":
 						/********************WHILE********************/
 						ast.setPrevious(father);
-						ast.setType("while");
-						ast.setContent(ast.getChildren().get(ast.findChildren("expression",0)).getChildrenContent());
+						ast.setType("bucle");
+						ast.setContent("while(" + ast.getChildren().get(ast.findChildren("expression",0)).getChildrenContent() + ")");
 						
 						System.out.println("WHILE "+ ast.getChildren().get(ast.findChildren("expression",0)).getChildrenContent());
-						father = visit(ast.getChildren().get(ast.findChildren("statement",0)),ast.getIdAsList());
+						father = visit(ast.getChildren().get(ast.findChildren("statement",0)),null/*ast.getIdAsList()*/);
 						System.out.println("WHILE-FIN ");
+						
 					break;
 					
 					case "do":
 						/********************DO********************/
 						ast.setPrevious(father);
-						ast.setType("do");
-						ast.setContent(ast.getChildren().get(ast.findChildren("expression",0)).getChildrenContent());
+						ast.setType("bucle");
+						ast.setContent("do... while(" + ast.getChildren().get(ast.findChildren("expression",0)).getChildrenContent() + ")");
 						
 						System.out.println("DO "+ ast.getChildren().get(ast.findChildren("expression",0)).getChildrenContent());
-						father = visit(ast.getChildren().get(ast.findChildren("statement",0)),ast.getIdAsList());
+						father = visit(ast.getChildren().get(ast.findChildren("statement",0)),null/*ast.getIdAsList()*/);
 						System.out.println("DO-FIN ");
+						
 					break;
 					
 					case "for":
 						/********************FOR********************/
 						ast.setPrevious(father);
-						ast.setType("for");
-						ast.setContent(ast.getChildren().get(ast.findChildren("forCondition",0)).getChildrenContent());
+						ast.setType("bucle");
+						ast.setContent("for(" + ast.getChildren().get(ast.findChildren("forCondition",0)).getChildrenContent() + ")");
 						
 						System.out.println("FOR "+ ast.getChildren().get(ast.findChildren("forCondition",0)).getChildrenContent());
-						father = visit(ast.getChildren().get(ast.findChildren("statement",0)),ast.getIdAsList());
+						father = visit(ast.getChildren().get(ast.findChildren("statement",0)),null/*ast.getIdAsList()*/);
 						System.out.println("FOR-FIN ");
+						
 					break;
 				}
+				
+				finBucle.setPrevious(father);
+				//father = finBucle.getIdAsList();
+				father = ast.getIdAsList();
 			break;
 			
 			//EXPRESIONES, FUNCIONES Y ASIGNACIONES VARIAS

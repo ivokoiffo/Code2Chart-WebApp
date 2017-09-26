@@ -10,7 +10,7 @@ import javax.xml.parsers.*;
 import org.w3c.dom.*;
 
 import com.mindfusion.diagramming.*;
-import com.mindfusion.diagramming.jlayout.Orientation;
+
 
 //if (newDecision)
 //{
@@ -140,12 +140,26 @@ public class MyDiagram extends JFrame{
         //Conn esto, menciono que si bien tome un layout de Decision, tambien tengo que mapear todas las relaciones de cada
         //uno de los nodos, es decir si hay uno que es decision, necesariamente tengo que crear los 2 links de decision seguidos,
         //no uno, y luego otro.
-        DecisionLayout layout = new DecisionLayout();
-        layout.setOrientation(Orientation.Vertical);
+        
+/*		TreeLayout layout = new TreeLayout();
+        layout.setType(TreeLayoutType.Centered);
+		
+        layout.setLevelDistance(10);
+        layout.setLinkStyle(TreeLayoutLinkType.Cascading3);
+*/
+		
+		DecisionLayout layout = new DecisionLayout();
         layout.setHorizontalPadding(10);
         layout.setVerticalPadding(10);
+
+		
+/*		FlowchartLayout layout = new FlowchartLayout();
+        layout.setBranchPadding(10);
+        layout.setLinkPadding(10);
+        layout.setNodeDistance(10);
+*/        
         layout.arrange(diagram);
-                
+        
         diagram.setShadowsStyle(ShadowsStyle.None);
         
         Rectangle2D medidaDiagrama = diagram.getContentBounds(false, true);
