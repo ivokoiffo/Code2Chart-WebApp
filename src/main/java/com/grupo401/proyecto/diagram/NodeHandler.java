@@ -3,8 +3,10 @@ package com.grupo401.proyecto.diagram;
 import org.w3c.dom.Element;
 
 import com.mindfusion.diagramming.AnchorPattern;
+import com.mindfusion.diagramming.ContainerNode;
 import com.mindfusion.diagramming.Shape;
 import com.mindfusion.diagramming.ShapeNode;
+import com.mindfusion.diagramming.SimpleShape;
 
 public class NodeHandler {
 	
@@ -36,9 +38,23 @@ public class NodeHandler {
 			    break;
 			    
 		        case "salida":
-		        	diagramaNodo.setShape(Shape.fromId("Save"));
+		        	diagramaNodo.setShape(Shape.fromId("Document"));
 			    break;
-		 }
- 
+		 } 
 	}
+	
+	public void conversorNodoContainer(Element nodo, ContainerNode diagramaNodo) {
+        String tipo = nodo.getAttribute("tipo");
+
+        switch (tipo) {
+
+            case "bucle":
+
+                diagramaNodo.setShape(SimpleShape.Rectangle);
+
+                break;
+        }
+
+    }
+	
 }
