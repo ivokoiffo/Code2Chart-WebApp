@@ -141,24 +141,38 @@ public class MyDiagram extends JFrame{
         //uno de los nodos, es decir si hay uno que es decision, necesariamente tengo que crear los 2 links de decision seguidos,
         //no uno, y luego otro.
         
-/*		TreeLayout layout = new TreeLayout();
+/*	CENTRA BIEN, PERO HACE CUALQUIERA CON LAS FLECHAS. PERMITE VARIAS ALINEACIONES, Y ELEGIR ENTRE TIPOS DE LINKS
+		TreeLayout layout = new TreeLayout();
         layout.setType(TreeLayoutType.Centered);
 		
-        layout.setLevelDistance(10);
+        layout.setLevelDistance(20);
         layout.setLinkStyle(TreeLayoutLinkType.Cascading3);
 */
 		
+/*	BASICO. SE VA PARA HORIZONTAL DE LA MISMA FORMA QUE PARA VERTICAL
 		DecisionLayout layout = new DecisionLayout();
         layout.setHorizontalPadding(10);
         layout.setVerticalPadding(10);
-
-		
-/*		FlowchartLayout layout = new FlowchartLayout();
+*/	
+/*	BARDEA CON LA VUELTA PARA ARRIBA, FLECHAS MAL
+		FlowchartLayout layout = new FlowchartLayout();
         layout.setBranchPadding(10);
-        layout.setLinkPadding(10);
+        layout.setLinkPadding(20);
         layout.setNodeDistance(10);
-*/        
-        layout.arrange(diagram);
+        layout.setSplitGraph(true);
+*/
+		
+/*	ACEPTABLE*/
+		LayeredLayout layout = new LayeredLayout();
+		layout.setLayerDistance(10);
+		layout.setNodeDistance(25);
+		layout.setStraightenLongLinks(true);
+
+/*	SI PODEMOS HACERLO VERTICAL EN VEZ DE HORIZONTAL, PUEDE JUGAR
+		TopologicalLayout layout = new TopologicalLayout();
+		layout.setOrientation(?????); <- NO SÉ QUE CARAJO PONER EN LA ORIENTACIÓN, NO ME ACEPTA LA HABITUAL 
+*/		
+		layout.arrange(diagram);
         
         diagram.setShadowsStyle(ShadowsStyle.None);
         
