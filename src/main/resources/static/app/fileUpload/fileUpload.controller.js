@@ -11,6 +11,18 @@
         var vm = this;
         vm.title = 'Choose the file you want to convert';
         vm.formData = {};
+        
+        vm.hasGithubUrl = function(){
+        	return (vm.formData.githubUrl.length > 0);
+        };
+        
+        vm.hasLocalPath = function(){
+        	return (vm.formData.localPath.length > 0);
+        }; 
+                                
+        vm.anyFile = function(){
+        	return !( vm.hasGithubUrl() || vm.hasLocalPath() ); 
+        };
 
         vm.$onInit = activate;
         

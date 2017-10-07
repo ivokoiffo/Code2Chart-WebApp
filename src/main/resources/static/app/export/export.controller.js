@@ -5,14 +5,18 @@
         .module('code2chart')
         .controller('exportController', exportController);
  
-    exportController.$inject = [];
+    exportController.$inject = ['$location'];
  
-    function exportController() {
+    function exportController($location) {
         var vm = this;
         vm.title = 'How do you want to export your file?';
         vm.formData = {};
         
         vm.$onInit = activate;
+        
+        vm.redirectToNewForm = function(){
+        	$location.url('/fileUpload.html');
+        };
 
         ////////////////
 
