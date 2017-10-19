@@ -1,6 +1,6 @@
 package com.grupo401.proyecto.diagram;
  
-import java.awt.geom.* ;
+import java.awt.geom.* ; 
 import java.io.*;
 import java.util.*;
 
@@ -11,14 +11,14 @@ import org.w3c.dom.*;
 
 import com.mindfusion.diagramming.*;
 
-public class MyDiagram extends JFrame{
+public class MyDiagram {
 
 	private NodeHandler manejador = new NodeHandler();
 	private HashMap<String, DiagramNode> nodeMap = new HashMap<String, DiagramNode>();
 	private static final long serialVersionUID = 1L;
 	
 	private Diagram diagram = new Diagram();
-	private DiagramView view = new DiagramView();
+	//private DiagramView view = new DiagramView();
 	
 	private ArrayList<ContainerNode> listaDeBucles = new ArrayList<>();
     private ArrayList<ArrayList<DiagramNode>> listasDeNodosParaBucles = new ArrayList<>();
@@ -29,23 +29,23 @@ public class MyDiagram extends JFrame{
     private int cantidadTotalDeBucles = 0;
     
 	public MyDiagram(String xmlPath, String diagramPath, String author, String description){
-		super(author + " " + description);
+		//super(author + " " + description);
 
 		// set up the main window
-		setBounds(0, 0, 600, 600);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		//setBounds(0, 0, 600, 600);
+		//setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		view.setDiagram(diagram);
+		//view.setDiagram(diagram);
 
 		// add scroll pane
-		JScrollPane scrollPane = new JScrollPane(view);
+		/*JScrollPane scrollPane = new JScrollPane(view);
 		scrollPane.setVisible(true);
-		getContentPane().add(scrollPane);
+		getContentPane().add(scrollPane);*/
 		
 		//TEST, DELETE LATER
 		loadGraph(diagram, xmlPath);
 		
-		view.zoomToFit();
+		//view.zoomToFit();
 
 		HtmlBuilder creador = new HtmlBuilder(diagram);
 		try {
