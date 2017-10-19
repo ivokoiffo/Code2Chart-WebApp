@@ -50,10 +50,11 @@ public class MainController {
 				fileContent  = null;//Files.lines(Paths.get(path)).collect(Collectors.joining());
 			}
 			
-			//File file = new File(form.getName());
-			//String path = file.getAbsolutePath();
+			File file = new File(form.getName());
+			String path = file.getAbsolutePath();
 			
-			//String filePreParse = Files.lines(Paths.get(path)).collect(Collectors.joining());
+			String filePreParse = Files.lines(Paths.get(path)).collect(Collectors.joining());
+			
 			
 			CCompiler compiler = new CCompiler();
 			AbstractSyntaxTreeConverter ast = compiler.compile(fileContent);

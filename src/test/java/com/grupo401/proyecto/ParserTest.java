@@ -17,7 +17,7 @@ public class ParserTest {
 	
 	@Test
 	public void testCompiler1() throws Exception {
-		File file = new File("hello5.c");
+		File file = new File("hello1.c");
 		String path = file.getAbsolutePath();
 		
 		String filePreParse = Files.lines(Paths.get(path)).collect(Collectors.joining());
