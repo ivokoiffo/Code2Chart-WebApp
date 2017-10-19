@@ -2,7 +2,7 @@
     'use strict';
 
     // Creating our angular app and inject ui-router 
-    var app = angular.module('code2chart', ['ui.router','ngMaterial'])
+    var app = angular.module('code2chart', ['ui.router','ngMaterial','ngFileUpload'])
 
     // Configuring our states, each one of these is a new stage in the process
     app.config(['$stateProvider', '$urlRouterProvider',

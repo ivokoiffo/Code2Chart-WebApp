@@ -4,7 +4,7 @@
     angular
         .module('code2chart')
         .controller('fileUploadController', fileUploadController);
- 
+    	
     fileUploadController.$inject = [];
  
     function fileUploadController() {
@@ -17,7 +17,7 @@
         };
         
         vm.hasLocalPath = function(){
-        	return (vm.formData.localPath.length > 0);
+        	return (vm.formData.localPath != null);
         }; 
                                 
         vm.anyFile = function(){
@@ -32,7 +32,6 @@
             // get data from the parent component
             vm.formData = vm.parent.getData();
             console.log('fileUpload feature loaded!');
-        }
-
+        }       
     }
 })();

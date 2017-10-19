@@ -10,12 +10,14 @@ import org.junit.Test;
 
 import com.grupo401.proyecto.diagram.MyDiagram;
 
+import exceptions.UnableToCreateFileException;
+
 
 public class ParserTest {
 	
 	@Test
 	public void testCompiler1() throws Exception {
-		File file = new File("hello1.c");
+		File file = new File("hello5.c");
 		String path = file.getAbsolutePath();
 		
 		String filePreParse = Files.lines(Paths.get(path)).collect(Collectors.joining());
@@ -35,7 +37,7 @@ public class ParserTest {
 		list.forEach(a-> builder.appendNode(a.getId(), a.getTipo(), a.getContent()).appendLink(a.getFather(), a.getId(), ""));
 		builder.build();
 		
-		MyDiagram mainFrame = new MyDiagram(builder.getFile().getAbsolutePath(), "diagrama1.png");
+		MyDiagram mainFrame = new MyDiagram(builder.getFile().getAbsolutePath(), "diagrama1.png",null,null);
 		mainFrame.setVisible(true);
 	}
 	
@@ -68,7 +70,7 @@ public class ParserTest {
 		});
 		builder.build();
 		
-		MyDiagram mainFrame = new MyDiagram(builder.getFile().getAbsolutePath(), "diagrama2.png");
+		MyDiagram mainFrame = new MyDiagram(builder.getFile().getAbsolutePath(), "diagrama2.png",null,null);
 		mainFrame.setVisible(true);
 	}
 	
@@ -103,7 +105,7 @@ public class ParserTest {
 		});
 		builder.build();
 		
-		MyDiagram mainFrame = new MyDiagram(builder.getFile().getAbsolutePath(), "diagrama3.png");
+		MyDiagram mainFrame = new MyDiagram(builder.getFile().getAbsolutePath(), "diagrama3.png",null,null);
 		mainFrame.setVisible(true);
 	}
 }

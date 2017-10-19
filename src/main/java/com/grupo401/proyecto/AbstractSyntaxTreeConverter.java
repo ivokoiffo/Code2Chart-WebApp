@@ -1,6 +1,6 @@
 package com.grupo401.proyecto;
 
-import org.antlr.v4.runtime.Token;
+import org.antlr.v4.runtime.Token; 
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class AbstractSyntaxTreeConverter {
     private String content;
     
     /**
-     * All child nodes of this AST.
+     * All  child nodes of this AST.
      */
     private final List<AbstractSyntaxTreeConverter> children;
     

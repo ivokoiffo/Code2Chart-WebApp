@@ -18,11 +18,10 @@
             	</div>
             </div>
             <div layout="row" flex>
-  				<md-input-container class="example-full-width">
-    				<input data-mdInput placeholder="Clic here to upload a file from your PC"
-    					ng-model='vm.formData.localPath'
-    					ng-disabled="vm.hasGithubUrl()">
- 				</md-input-container>
+  				<md-button class="md-raised example-full-width" ng-disabled="vm.hasGithubUrl()"
+  						ngf-select ng-model="vm.formData.localPath">
+    				 Cargue un archivo localmente desde su computadora
+ 				</md-button>
 			</div>				
             <div class="button-toolbar" layout="row" layout-align="center">	
 			<md-button class="md-raised" ui-sref="form.configure"
@@ -35,4 +34,3 @@
 </div>
 </div>
 
- 

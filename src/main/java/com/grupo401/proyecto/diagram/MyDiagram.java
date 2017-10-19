@@ -1,6 +1,6 @@
 package com.grupo401.proyecto.diagram;
  
-import java.awt.geom.*;
+import java.awt.geom.* ;
 import java.io.*;
 import java.util.*;
 
@@ -10,16 +10,6 @@ import javax.xml.parsers.*;
 import org.w3c.dom.*;
 
 import com.mindfusion.diagramming.*;
-
-
-//if (newDecision)
-//{
-//	newNode.setShape(Shape.fromId("Decision"));
-//	newNode.setAnchorPattern(AnchorPattern.fromId("Decision2In2Out"));
-//	newNode.setBrush(decisionBrush);
-//	newNode.setText("Decision");
-//	newNode.setTag(true);
-//}
 
 public class MyDiagram extends JFrame{
 
@@ -38,8 +28,8 @@ public class MyDiagram extends JFrame{
     
     private int cantidadTotalDeBucles = 0;
     
-	public MyDiagram(String xmlPath, String diagramPath){
-		super("Diagrama de flujo");
+	public MyDiagram(String xmlPath, String diagramPath, String author, String description){
+		super(author + " " + description);
 
 		// set up the main window
 		setBounds(0, 0, 600, 600);

@@ -7,7 +7,7 @@
  
     function FormDataModel() {
         this.githubUrl = '';
-        this.localPath = '';
+        this.localPath = null;
         this.name = '';
         this.description = '';
         this.author = '';
