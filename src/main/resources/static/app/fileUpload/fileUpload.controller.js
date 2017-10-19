@@ -9,7 +9,7 @@
  
     function fileUploadController() {
         var vm = this;
-        vm.title = 'Choose the file you want to convert';
+        vm.title = 'Elija el archivo que quiera convertir';
         vm.formData = {};
         
         vm.hasGithubUrl = function(){

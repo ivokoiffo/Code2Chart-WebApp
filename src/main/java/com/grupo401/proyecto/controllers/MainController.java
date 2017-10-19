@@ -35,7 +35,7 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/api/generarDiagrama", method=RequestMethod.POST, consumes="application/json")
-	public ResponseEntity<MyDiagram> generateDiagram(@RequestBody FormData form){
+	public ResponseEntity<String> generateDiagram(@RequestBody FormData form){
 		
 		
 		FileHelper.getInstance();
@@ -44,9 +44,6 @@ public class MainController {
 			if(!form.getGithubUrl().isEmpty()){
 				fileContent = FileHelper.escribirEnFS(form.getGithubUrl());
 			}else{
-				JSONPObject file = (JSONPObject) form.getLocalPath();
-				//String path = file.getAbsolutePath();
-				
 				fileContent  = null;//Files.lines(Paths.get(path)).collect(Collectors.joining());
 			}
 			
@@ -71,11 +68,10 @@ public class MainController {
 			list.forEach(a-> builder.appendNode(a.getId(), a.getTipo(), a.getContent()).appendLink(a.getFather(), a.getId(), ""));
 			builder.build();
 			
-			MyDiagram mainFrame = new MyDiagram(builder.getFile().getAbsolutePath(), 
+			new MyDiagram(builder.getFile().getAbsolutePath(), 
 					form.getName().concat(".png"),form.getAuthor(),form.getDescription());
-			//mainFrame.setVisible(true);
 			
-			return new ResponseEntity<>(mainFrame,HttpStatus.OK);
+			return new ResponseEntity<>("Se ha creado el Diagrama Satisfactoriamente",HttpStatus.OK);
 		} catch (IOException e) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}

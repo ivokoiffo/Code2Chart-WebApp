@@ -9,7 +9,7 @@
     	
     function exportController($location,dataFactory) {
         var vm = this;
-        vm.title = 'How do you want to export your file?';
+        vm.title = 'Que desea hacer con su archivo?';
         vm.formData = {};
                 
         vm.redirectToNewForm = function(){
@@ -25,6 +25,8 @@
         	dataFactory.generarDiagrama(vm.parent.getData())
         		.then(function(response){
         			vm.diagrama = response.data;
+        			var file = new Blob([vm.diagrama], { type: 'image/png' });
+        	        saveAs(file, vm.parent.getData().name + '.png');
         			console.log(vm.diagrama);
         		}, function(error){
         			vm.status = 'El diagrama no ha podido generarse. Intente nuevamente'; 
