@@ -908,3 +908,19 @@ LineComment
     :   '//' ~[\r\n]*
         -> skip
     ;
+    
+Include
+    :   '#include'.*?[\r\n]*?
+        -> skip
+    ;
+
+Define
+    :   '#define'.*?[\r\n]*?
+        -> skip
+    ;
+
+OtherPoundStuff
+    :   [\r\n]'#'.*?[\r\n]*?
+        -> skip
+    ;
+
