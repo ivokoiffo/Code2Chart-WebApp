@@ -13,13 +13,18 @@ int main() {
 		case 2:
 			printf("DOS\n");
 		break;
+
+	case 3:
+	  i = 5;
+	  break;
 		
 		default:
 			i++;
 		break;
 	}
 	while(i>=0){
-		printf("WHILE FUNCTION\n");
+		printf("CODE2CHART\n");
+		j = 3;
 		i--;
 	}
 

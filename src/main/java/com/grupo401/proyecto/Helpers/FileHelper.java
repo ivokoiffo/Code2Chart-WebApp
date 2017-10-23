@@ -1,4 +1,4 @@
-package com.grupo401.proyecto.githubHelper;
+package com.grupo401.proyecto.Helpers;
 
 import java.io.BufferedReader ;
 import java.io.IOException;

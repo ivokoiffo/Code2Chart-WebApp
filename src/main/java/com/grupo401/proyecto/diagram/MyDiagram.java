@@ -4,7 +4,6 @@ import java.awt.geom.* ;
 import java.io.*;
 import java.util.*;
 
-import javax.swing.*;
 import javax.xml.parsers.*;
 
 import org.w3c.dom.*;
@@ -28,24 +27,7 @@ public class MyDiagram {
     
     private int cantidadTotalDeBucles = 0;
     
-	public MyDiagram(String xmlPath, String diagramPath, String author, String description){
-		//super(author + " " + description);
-
-		// set up the main window
-		//setBounds(0, 0, 600, 600);
-		//setDefaultCloseOperation(EXIT_ON_CLOSE);
-
-		//view.setDiagram(diagram);
-
-		// add scroll pane
-		/*JScrollPane scrollPane = new JScrollPane(view);
-		scrollPane.setVisible(true);
-		getContentPane().add(scrollPane);*/
-		
-		//TEST, DELETE LATER
-		loadGraph(diagram, xmlPath);
-		
-		//view.zoomToFit();
+	public MyDiagram(String xmlPath, String diagramPath, String author){
 
 		HtmlBuilder creador = new HtmlBuilder(diagram);
 		try {
@@ -55,24 +37,6 @@ public class MyDiagram {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		//ENDTEST
-		/*
-		this.addWindowListener(new WindowAdapter()
-		{
-			@Override
-			public void windowOpened(WindowEvent e)
-			{
-				loadGraph(diagram, xmlPath);
-
-				HtmlBuilder creador = new HtmlBuilder(diagram);
-				try {
-					String text = creador.createImageHtml("index.html","Code2Chart","diagrama.png", "diagrama.png", "png");
-					System.out.println(text);
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-			}
-		});*/
 	}
 	
 	void loadGraph(Diagram diagram, String filepath){
@@ -130,38 +94,11 @@ public class MyDiagram {
         //Conn esto, menciono que si bien tome un layout de Decision, tambien tengo que mapear todas las relaciones de cada
         //uno de los nodos, es decir si hay uno que es decision, necesariamente tengo que crear los 2 links de decision seguidos,
         //no uno, y luego otro.
-        
-/*	CENTRA BIEN, PERO HACE CUALQUIERA CON LAS FLECHAS. PERMITE VARIAS ALINEACIONES, Y ELEGIR ENTRE TIPOS DE LINKS
-		TreeLayout layout = new TreeLayout();
-        layout.setType(TreeLayoutType.Centered);
-		
-        layout.setLevelDistance(20);
-        layout.setLinkStyle(TreeLayoutLinkType.Cascading3);
-*/
-		
-/*	BASICO. SE VA PARA HORIZONTAL DE LA MISMA FORMA QUE PARA VERTICAL
-		DecisionLayout layout = new DecisionLayout();
-        layout.setHorizontalPadding(10);
-        layout.setVerticalPadding(10);
-*/	
-/*	BARDEA CON LA VUELTA PARA ARRIBA, FLECHAS MAL
-		FlowchartLayout layout = new FlowchartLayout();
-        layout.setBranchPadding(10);
-        layout.setLinkPadding(20);
-        layout.setNodeDistance(10);
-        layout.setSplitGraph(true);
-*/
-		
-/*	ACEPTABLE*/
 		LayeredLayout layout = new LayeredLayout();
 		layout.setLayerDistance(10);
 		layout.setNodeDistance(25);
 		layout.setStraightenLongLinks(true);
 
-/*	SI PODEMOS HACERLO VERTICAL EN VEZ DE HORIZONTAL, PUEDE JUGAR
-		TopologicalLayout layout = new TopologicalLayout();
-		layout.setOrientation(?????); <- NO SÉ QUE CARAJO PONER EN LA ORIENTACIÓN, NO ME ACEPTA LA HABITUAL 
-*/		
 		layout.arrange(diagram);
         
         diagram.setShadowsStyle(ShadowsStyle.None);

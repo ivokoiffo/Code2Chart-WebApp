@@ -22,8 +22,8 @@ import com.grupo401.proyecto.FormData;
 import com.grupo401.proyecto.MyCVisitor;
 import com.grupo401.proyecto.ParserToXmlAdapter;
 import com.grupo401.proyecto.XmlBuilder;
+import com.grupo401.proyecto.Helpers.FileHelper;
 import com.grupo401.proyecto.diagram.MyDiagram;
-import com.grupo401.proyecto.githubHelper.FileHelper;
 
 @Controller
 public class MainController {
@@ -68,8 +68,7 @@ public class MainController {
 			list.forEach(a-> builder.appendNode(a.getId(), a.getTipo(), a.getContent()).appendLink(a.getFather(), a.getId(), ""));
 			builder.build();
 			
-			new MyDiagram(builder.getFile().getAbsolutePath(), 
-					form.getName().concat(".png"),form.getAuthor(),form.getDescription());
+			MyDiagram diagram = new MyDiagram(builder.getFile().getAbsolutePath(),form.getName().concat(".png"),form.getAuthor());
 			
 			return new ResponseEntity<>("Se ha creado el Diagrama Satisfactoriamente",HttpStatus.OK);
 		} catch (IOException e) {
