@@ -28,7 +28,7 @@ public class MyDiagram {
     
     private int cantidadTotalDeBucles = 0;
     
-	public MyDiagram(String xmlPath, String diagramPath, String author, String description){
+	public MyDiagram(String xmlPath, String nombreDelDiagrama, String author, String description){
 		//super(author + " " + description);
 
 		// set up the main window
@@ -49,8 +49,11 @@ public class MyDiagram {
 
 		HtmlBuilder creador = new HtmlBuilder(diagram);
 		try {
-			//String text = 
-			creador.createImageHtml("index.html", "Code2Chart", diagramPath, "diagrama.png", "png");
+			//String ruta = ".\\";
+			//String ruta = "C:\\Documents and Settings\\Lenovo\\Desktop";
+			//ruta = ruta.replace("\\", "/");
+			//String ruta = System.getProperty("java.io.tmpdir");
+			creador.createImageHtml("index.html", "Code2Chart", nombreDelDiagrama,"./", "png");
 			//System.out.println(text);
 		} catch (IOException e1) {
 			e1.printStackTrace();
