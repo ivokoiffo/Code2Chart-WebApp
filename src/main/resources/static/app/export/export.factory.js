@@ -7,7 +7,7 @@ angular.module('code2chart')
     var dataFactory = {};
     
     dataFactory.generarDiagrama = function (formData) {
-        return $http( {
+        return $http({
     	  data: formData,
     	  format: 'json',
           method:'POST',

@@ -28,32 +28,14 @@ public class MyDiagram {
     private int cantidadTotalDeBucles = 0;
     
 	public MyDiagram(String xmlPath, String nombreDelDiagrama, String author, String description){
-		//super(author + " " + description);
-
-		// set up the main window
-		//setBounds(0, 0, 600, 600);
-		//setDefaultCloseOperation(EXIT_ON_CLOSE);
-
-		//view.setDiagram(diagram);
-
-		// add scroll pane
-		/*JScrollPane scrollPane = new JScrollPane(view);
-		scrollPane.setVisible(true);
-		getContentPane().add(scrollPane);*/
 		
-		//TEST, DELETE LATER
 		loadGraph(diagram, xmlPath);
 		
-		//view.zoomToFit();
-
 		HtmlBuilder creador = new HtmlBuilder(diagram);
 		try {
-			//String ruta = ".\\";
-			//String ruta = "C:\\Documents and Settings\\Lenovo\\Desktop";
-			//ruta = ruta.replace("\\", "/");
-			//String ruta = System.getProperty("java.io.tmpdir");
+			
 			creador.createImageHtml("index.html", "Code2Chart", nombreDelDiagrama,"./", "png");
-			//System.out.println(text);
+
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}

@@ -1,11 +1,15 @@
 package com.grupo401.proyecto.controllers;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.stream.Collectors;
+
+import javax.imageio.ImageIO;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +27,7 @@ import com.grupo401.proyecto.MyCVisitor;
 import com.grupo401.proyecto.ParserToXmlAdapter;
 import com.grupo401.proyecto.XmlBuilder;
 import com.grupo401.proyecto.Helpers.FileHelper;
+import com.grupo401.proyecto.Helpers.ImageHelper;
 import com.grupo401.proyecto.diagram.MyDiagram;
 
 @Controller
@@ -35,7 +40,7 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/api/generarDiagrama", method=RequestMethod.POST, consumes="application/json")
-	public ResponseEntity<String> generateDiagram(@RequestBody FormData form){
+	public ResponseEntity<byte[]> generateDiagram(@RequestBody FormData form){
 		
 		
 		FileHelper.getInstance();
@@ -47,7 +52,7 @@ public class MainController {
 				fileContent  = null;//Files.lines(Paths.get(path)).collect(Collectors.joining());
 			}
 			
-			//File file = new File(form.getName());
+			//File file = new File(form.getLocalPath().toString());
 			//String path = file.getAbsolutePath();
 			
 			//String filePreParse = Files.lines(Paths.get(path)).collect(Collectors.joining());
@@ -68,9 +73,13 @@ public class MainController {
 			list.forEach(a-> builder.appendNode(a.getId(), a.getTipo(), a.getContent()).appendLink(a.getFather(), a.getId(), ""));
 			builder.build();
 			
-			MyDiagram diagram = new MyDiagram(builder.getFile().getAbsolutePath(),form.getName().concat(".png"),form.getAuthor());
+			new MyDiagram(builder.getFile().getAbsolutePath(),form.getName().concat(".png"),form.getAuthor(), null);
 			
-			return new ResponseEntity<>("Se ha creado el Diagrama Satisfactoriamente",HttpStatus.OK);
+			byte[] image = ImageHelper.doGet(form.getName().concat(".png"));
+			
+			
+						
+			return new ResponseEntity<byte[]>(image,HttpStatus.OK);
 		} catch (IOException e) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}

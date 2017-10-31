@@ -5,9 +5,9 @@
         .module('code2chart')
         .controller('exportController', exportController);
     	
-    exportController.$inject = ['$location','dataFactory'];
+    exportController.$inject = ['$location','dataFactory','toaster'];
     	
-    function exportController($location,dataFactory) {
+    function exportController($location,dataFactory,toaster) {
         var vm = this;
         vm.title = 'Que desea hacer con su archivo?';
         vm.formData = {};
@@ -18,19 +18,15 @@
         
         vm.generate = function(){
 	
-			/*if (vm.parent.getData().localPath.file != null) {
-			  vm.upload(vm.parent.getData().localPath.file);
-			}*/
-			
-        	dataFactory.generarDiagrama(vm.parent.getData())
-        		.then(function(response){
-        			vm.diagrama = response.data;
-        			var file = new Blob([vm.diagrama], { type: 'image/png' });
-        	        saveAs(file, vm.parent.getData().name + '.png');
-        			console.log(vm.diagrama);
-        		}, function(error){
-        			vm.status = 'El diagrama no ha podido generarse. Intente nuevamente'; 
-        		});
+	    	dataFactory.generarDiagrama(vm.parent.getData())
+	    		.then(function onSuccess(response){
+	    			vm.diagrama = response.data;
+	    			var blob = new Blob([vm.diagrama], {type: "application/octet-stream"});
+	    			var fileName = vm.parent.getData().name + '.png';
+	    			saveAs(blob, fileName);
+	    		}, function onFail(error){
+	    			toaster.error("No se ha podido eliminar el elemento"); 
+    		});
         };
     }
 })();
