@@ -19,14 +19,12 @@
         vm.generate = function(){
 	
 	    	dataFactory.generarDiagrama(vm.parent.getData())
-	    		.then(function onSuccess(response){
-	    			vm.diagrama = response.data;
-	    			var blob = new Blob([vm.diagrama], {type: "application/octet-stream"});
+	    		.then(function (response){
 	    			var fileName = vm.parent.getData().name + '.png';
-	    			saveAs(blob, fileName);
-	    		}, function onFail(error){
+	    			saveAs(response, fileName);
+	    		}, function (error){
 	    			toaster.error("No se ha podido eliminar el elemento"); 
-    		});
+	    		});
         };
     }
 })();

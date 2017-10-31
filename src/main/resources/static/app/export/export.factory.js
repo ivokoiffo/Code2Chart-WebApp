@@ -7,12 +7,15 @@ angular.module('code2chart')
     var dataFactory = {};
     
     dataFactory.generarDiagrama = function (formData) {
-        return $http({
+        return $http( {
     	  data: formData,
-    	  format: 'json',
           method:'POST',
-          url: urlBase
-        })
+          url: urlBase,
+          responseType: 'arraybuffer'
+        }).then(function (response) {
+        	var blob = new Blob([response.data], {type: "application/octet-stream"});
+        	return blob;
+          });
     };
     
     return dataFactory;
