@@ -37,11 +37,7 @@ public class ParserTest {
 		list.forEach(a-> builder.appendNode(a.getId(), a.getTipo(), a.getContent()).appendLink(a.getFather(), a.getId(), ""));
 		builder.build();
 		
-<<<<<<< HEAD
-		//MyDiagram mainFrame = new MyDiagram(builder.getFile().getAbsolutePath(), "diagrama1.png",null,null);
-=======
 		MyDiagram mainFrame = new MyDiagram(builder.getFile().getAbsolutePath(), "diagrama1.png",null,null);
->>>>>>> 1e5ffa41bae271192cfbb9df6b6c0c9096c165c0
 //		mainFrame.setVisible(true);
 	}
 	
@@ -73,13 +69,8 @@ public class ParserTest {
 			}
 		});
 		builder.build();
-		
-<<<<<<< HEAD
 
-		//MyDiagram mainFrame = new MyDiagram(builder.getFile().getAbsolutePath(), "diagrama2.png",null,null);
-=======
 		MyDiagram mainFrame = new MyDiagram(builder.getFile().getAbsolutePath(), "diagrama2.png",null,null);
->>>>>>> 1e5ffa41bae271192cfbb9df6b6c0c9096c165c0
 //		mainFrame.setVisible(true);
 	}
 	
@@ -114,11 +105,7 @@ public class ParserTest {
 		});
 		builder.build();
 		
-<<<<<<< HEAD
-		//MyDiagram mainFrame = new MyDiagram(builder.getFile().getAbsolutePath(), "diagrama3.png",null,null);
-=======
 		MyDiagram mainFrame = new MyDiagram(builder.getFile().getAbsolutePath(), "diagrama3.png",null,null);
->>>>>>> 1e5ffa41bae271192cfbb9df6b6c0c9096c165c0
 //		mainFrame.setVisible(true);
 	}
 	
@@ -153,13 +140,7 @@ public class ParserTest {
 		});
 		builder.build();
 		
-<<<<<<< HEAD
-		//MyDiagram mainFrame = new MyDiagram(builder.getFile().getAbsolutePath(), "diagrama4.png",null,null);
-//		mainFrame.setVisible(true);
-
-=======
 		MyDiagram mainFrame = new MyDiagram(builder.getFile().getAbsolutePath(), "diagrama4.png",null,null);
 //		mainFrame.setVisible(true);
->>>>>>> 1e5ffa41bae271192cfbb9df6b6c0c9096c165c0
 	}
 }
