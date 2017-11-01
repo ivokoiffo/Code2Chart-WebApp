@@ -12,10 +12,15 @@
  				</md-input-container>
             </div>
             <div layout="row" flex>
-  				<md-button class="md-raised example-full-width" ng-disabled="vm.hasGithubUrl()"
-  						ngf-select ng-model="vm.formData.localPath">
-    				 Cargar archivo localmente
- 				</md-button>
+            	<div class="input-group">
+            	<label class="input-group-btn">
+            		<span class="btn btn-primary">
+            		Seleccionar archivo local&hellip; <input type="file" style="display: none; multiple"
+    				ngf-select="" ng-model="vm.formData.localPath" ng-disabled="vm.hasGithubUrl()">
+            		</span>
+				</label>
+				<input type="text" ng-model="vm.formData.localPath.name" class="form-control" readonly>
+            	</div>
 			</div>				
             <div class="button-toolbar" layout="row" layout-align="center">	
 			<md-button class="md-raised" ui-sref="form.configure"
@@ -27,4 +32,3 @@
     </div>
 </div>
 </div>
-
