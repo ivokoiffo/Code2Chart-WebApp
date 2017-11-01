@@ -1,28 +1,16 @@
 package com.grupo401.proyecto.controllers;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.LinkedList;
-import java.util.stream.Collectors;
-
-import javax.imageio.ImageIO;
-
 import org.apache.commons.io.IOUtils;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.grupo401.proyecto.ASTContainer;
 import com.grupo401.proyecto.AbstractSyntaxTreeConverter;
 import com.grupo401.proyecto.CCompiler;
