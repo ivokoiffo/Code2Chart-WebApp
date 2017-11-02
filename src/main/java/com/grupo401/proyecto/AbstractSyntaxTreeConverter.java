@@ -33,6 +33,10 @@ public class AbstractSyntaxTreeConverter {
     public void addChildren(AbstractSyntaxTreeConverter ast) {
     	this.children.add(ast);
     }
+    
+    public void addChildren(AbstractSyntaxTreeConverter ast, int posicion) {
+    	this.children.add(posicion, ast);
+    }
 //END    
     
     public AbstractSyntaxTreeConverter(ParseTree tree) {

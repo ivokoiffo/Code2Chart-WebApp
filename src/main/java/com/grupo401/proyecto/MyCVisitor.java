@@ -14,15 +14,10 @@ public class MyCVisitor {
 			father.add(0);
 		}
 		
-		if(father.size()==4){
-			father.size();
-		}
-		
 		switch(ast.getPayload().toString()){
 			case "inicio":
-				ast.setPrevious(father);
+//				ast.setPrevious(father);
 				ast.setType("inicio");
-				ast.setContent("Inicio");
 				
 				father = new LinkedList<Integer>();
 				father.add(ast.getId());
@@ -31,10 +26,9 @@ public class MyCVisitor {
 			case "fin":
 				ast.setPrevious(father);
 				ast.setType("fin");
-				ast.setContent("Fin");
 				
 				father = new LinkedList<Integer>();
-				father.add(ast.getId());
+//				father.add(ast.getId());
 			break;
 			
 			case "selectionStatement":
