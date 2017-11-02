@@ -853,8 +853,13 @@ SChar
     |   '\\\r\n' // Added line
     ;
     
-PreprocessorBlock
+PreprocessorInclude
     :   '#' ~[\r\n]*?
+		-> skip
+    ;
+
+PreprocessorComplexInclude
+    :   '#''!' ~[\r\n]*?
 		-> skip
     ;
 
