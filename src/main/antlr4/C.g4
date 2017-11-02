@@ -852,6 +852,11 @@ SChar
     |   '\\\n'   // Added line
     |   '\\\r\n' // Added line
     ;
+    
+PreprocessorBlock
+    :   '#' ~[\r\n]*?
+		-> skip
+    ;
 
 ComplexDefine
     :   '#' Whitespace? 'define'  ~[#]*
