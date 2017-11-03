@@ -24,24 +24,24 @@
     		);
     	};
     	
-    	function Person (fullname,age,bio){
+    	function Person (fullname,age,bio,ruta){
     		    this.name = fullname;
     		    this.age = age;
     		    this.bio = bio;
+    		    this.ruta = ruta;
     		};
     	
     	$scope.team = [];
-    	
     	var rodri = new Person("Rodrigo Vazquez",22,"Universidad Tecnologica Nacional - FRBA" +
-    			"Trabaja en Ford Motor Company");
-    	var koiffo = new Person("Ivan Koiffman",22,"Universidad Tecnologica Nacional - FRBA" +
-    			"Trabaja en Base4");
+    			"Trabaja en Ford Motor Company","content/images/rodrigo.png");
+    	var koiffo = new Person("Iván Koiffman",22,"Universidad Tecnologica Nacional - FRBA" +
+    			"Trabaja en Base4Security","content/images/ivan.png");
     	var santi = new Person("Santiago Varela",23,"Universidad Tecnologica Nacional - FRBA" +
-    			"Trabaja en Siemens");
+    			"Trabaja en Siemens","content/images/santiago.png");
     	var jony = new Person("Jonatan Martinez",22,"Universidad Tecnologica Nacional - FRBA" +
-    			"Trabaja en EY");
+    			"Trabaja en EY","content/images/rodrigo.png");
     	var nico = new Person("Nicolas Taccari",22,"Universidad Tecnologica Nacional - FRBA" +
-    			"Trabaja en ExxonMobil");
+    			"Trabaja en ExxonMobil","content/images/rodrigo.png");
     	
     	$scope.team.push(rodri);
     	$scope.team.push(koiffo);

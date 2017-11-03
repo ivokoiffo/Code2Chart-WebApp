@@ -9,7 +9,7 @@
  
     function configureController() {
         var vm = this;
-        vm.title = 'Ingrese la informacion general de su diagrama';
+        vm.title = 'Ingrese la información general de su diagrama';
         vm.formData = {};
         
         vm.hasAllParams = function(){

@@ -9,7 +9,7 @@
  
     function FormController(FormDataModel) {
         var vm = this;
-        vm.title = 'Multi-Step Wizard';
+        vm.title = 'Asistente';
         // we will store all of our form data in this object
         vm.formData = new FormDataModel();
 

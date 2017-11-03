@@ -1,23 +1,30 @@
 <div ng-controller="aboutController">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="app/about/social.css">
+<script type="text/javascript" src="content/js/contacto.js"></script>
 <div layout="row" layout-align="center center">
   <h2 class="md-primary">El equipo de Code2Chart</h2>
 </div>
-<md-content layout="row" layout-align="space-around center" layout-wrap layout-sm="column">
-  	
-  	<div ng-repeat="member in team">
-	<md-card md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch>
-	  <md-card-title>
-	    <md-card-title-text>
-	      <span class="md-headline" >{{member.name}}</span>
-	      <span class="md-subhead">{{member.age}}</span>
-	    </md-card-title-text>
-	    <md-card-title-media>
-	      <div class="md-media-sm card-media"></div>
-	    </md-card-title-media>
-	  </md-card-title>
-	  <md-card-actions layout="row" layout-align="end center">
-	    <md-button class="md-primary md-raised" ng-click="openFromLeft()">Leer más</md-button>
-	  </md-card-actions>
+<md-content layout="row" layout-align="space-around space-between" layout-wrap layout-sm="row" class="md-padding" layout-xs="row">
+  	<div ng-repeat="member in team" flex-xs flex-gt-xs="20" layout="row" >
+	<md-card md-theme="{{'default' }}" md-theme-watch>
+        	<img ng-src={{member.ruta}} class="md-card-image" alt={{member.name}} />
+        <md-card-title>
+          <md-card-title-text layout-fill>
+            <span class="md-headline">{{member.name}}</span>
+          </md-card-title-text>
+                            </md-card-title>
+          
+          <p>
+            {{member.bio}}
+          </p>
+        <div layout="row" layout-align="center">
+            <ul class="social-network social-circle">
+               	<li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+            	<li><a href="#" class="icoGithub" title="Github"><i class="fa fa-github"></i></a></li>
+        	</ul>				
+        </div>
 	</md-card>
 	</div>
 </md-content>

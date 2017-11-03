@@ -9,7 +9,7 @@
     	
     function exportController($location,dataFactory,toaster) {
         var vm = this;
-        vm.title = 'Que desea hacer con su archivo?';
+        vm.title = '¿Que desea hacer con su archivo?';
         vm.formData = {};
                 
         vm.redirectToNewForm = function(){
