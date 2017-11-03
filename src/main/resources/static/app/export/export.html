@@ -3,10 +3,10 @@
         <h4 class="head text-center">{{vm.title}}</h4>
         <br/>
         <div layout='row' layout-align="center center">
-        	<div class="col-sm-5 col-xs-10">
+        	<div class="col-sm-5 col-xs-10" layout='column'>
 				<md-button class="md-raised" ng-click="vm.generate()">
-          			Descargar archivo
-          			<i class="fa fa-save fa-lg" aria-hidden="true"></i>
+          			<i class="fa fa-save" aria-hidden="true"></i>
+          			<p>Descargar archivo</p>
   				</md-button>
   			</div>
         	<div class="col-sm-5 col-xs-10">
@@ -17,10 +17,10 @@
         	</div>
        	</div>
         <div layout="row" layout-align="center end">
-            <md-button class="md-raised" ui-sref="form.configure">	
+            <md-button class="md-fab" ui-sref="form.configure">	
             	<i class="fa fa-arrow-left fa-lg" aria-hidden="true"></i>
 			</md-button>	
-			<md-button class="md-raised" ng-click="vm.redirectToNewForm()">	
+			<md-button class="md-fab" ng-click="vm.redirectToNewForm()">	
             	<i class="fa fa-home fa-lg" aria-hidden="true"></i>
 			</md-button>
         </div>    
