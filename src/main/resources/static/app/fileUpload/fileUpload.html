@@ -11,6 +11,7 @@
     				 placeholder="Ingrese la URL de su archivo raw de github">
  				</md-input-container>
             </div>
+            <p style="text-align:center">O</p>
             <div layout="row" flex>
             	<div class="input-group">
             	<label class="input-group-btn">
@@ -23,9 +24,8 @@
 				<input type="text" ng-model="file[0].name" class="form-control" readonly>
             	</div>
 			</div>				
-            <div class="button-toolbar" layout="row" layout-align="center">	
-			<md-button class="md-raised" ui-sref="form.configure"
-					ng-disabled="vm.anyFile()">	
+            <div class="button-toolbar" layout="row" layout-align="center" style="margin-top:40px">	
+			<md-button class="md-fab" ui-sref="form.configure" ng-disabled="vm.anyFile()">	
             	<i class="fa fa-arrow-right fa-lg" aria-hidden="true"></i>
 			</md-button>
         </div>    
