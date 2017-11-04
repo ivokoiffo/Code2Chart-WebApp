@@ -16,17 +16,20 @@
 
 </head>
 <body>
-	<div layout="row" flex="" >
+	<div layout="row" flex="" layout-align="start"  class="ng-cloak" >
 	    <md-nav-bar md-selected-nav-item="currentNavItem">
-		  <md-nav-item md-nav-sref="home">Code2Chart</md-nav-item>
-		  <md-nav-item md-nav-sref="#">Descargar</md-nav-item>
-		  <md-nav-item md-nav-sref="form.fileUpload" sref-opts="{reload: true, notify: true}">
-		    Probar
+		  <md-nav-item md-nav-sref="home">
+		  	<img src="/images/logo.png" alt="Code2Chart" style="width:55%"></img>
 		  </md-nav-item>
-		  <md-nav-item md-nav-sref="about">Sobre Nosotros</md-nav-item>
+		  	  <md-nav-item md-nav-sref="home">Inicio</md-nav-item>
+			  <md-nav-item md-nav-sref="#">Descargar</md-nav-item>
+			  <md-nav-item md-nav-sref="form.fileUpload" sref-opts="{reload: true, notify: true}">
+			    Probar
+			  </md-nav-item>
+			  <md-nav-item md-nav-sref="about">Sobre Nosotros</md-nav-item>
 		</md-nav-bar>
-	</div>    
- 	
+		</div>
+			
  	 <!-- views will be injected here -->
     <section style="background:#ffffff;">
         <div class="container">
