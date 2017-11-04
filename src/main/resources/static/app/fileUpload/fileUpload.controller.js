@@ -5,19 +5,28 @@
         .module('code2chart')
         .controller('fileUploadController', fileUploadController);
     	
-    fileUploadController.$inject = [];
+    fileUploadController.$inject = ['$scope'];
  
-    function fileUploadController() {
+    function fileUploadController($scope) {
         var vm = this;
         vm.title = 'Elija el archivo que quiera convertir';
         vm.formData = {};
+        $scope.file = [];
+        
+        //3 listener para el evento que lanza la directiva
+        $scope.$on("seletedFile", function (event, args) {  
+            $scope.$apply(function () {  
+                //se agrega el file al array, luego se appendea en el json  
+                $scope.file.push(args.file); 
+            });  
+        });  
         
         vm.hasGithubUrl = function(){
         	return (vm.formData.githubUrl.length > 0);
         };
         
         vm.hasLocalPath = function(){
-        	return (vm.formData.localPath != null);
+        	return ($scope.file.length > 0);
         }; 
                                 
         vm.anyFile = function(){
@@ -31,6 +40,7 @@
         function activate() {
             // get data from the parent component
             vm.formData = vm.parent.getData();
+            $scope.file = vm.parent.getFile();
             console.log('fileUpload feature loaded!');
         }       
     }

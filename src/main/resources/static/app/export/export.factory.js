@@ -8,10 +8,12 @@ angular.module('code2chart')
     
     dataFactory.generarDiagrama = function (formData) {
         return $http( {
-    	  data: formData,
           method:'POST',
+          data: formData,
           url: urlBase,
-          responseType: 'arraybuffer'
+          headers: { 'Content-Type': undefined },
+          responseType: 'arraybuffer',
+          
         }).then(function (response) {
         	var blob = new Blob([response.data], {type: "application/octet-stream"});
         	return blob;

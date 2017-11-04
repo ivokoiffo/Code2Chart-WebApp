@@ -3,13 +3,19 @@ package com.grupo401.proyecto.controllers;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.LinkedList;
+
+import javax.validation.Valid;
+import javax.validation.constraints.Null;
+
 import org.apache.commons.io.IOUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.grupo401.proyecto.ASTContainer;
 import com.grupo401.proyecto.AbstractSyntaxTreeConverter;
@@ -25,32 +31,26 @@ import com.grupo401.proyecto.diagram.MyDiagram;
 @Controller
 public class MainController {
 	
-	
+	private FileHelper fileHelper = new FileHelper();
+
 	@RequestMapping(value={"/", "*"})
 	public String viewHome() {
 		return "index";
 	}
 	
-	@RequestMapping(value="/api/generarDiagrama", method=RequestMethod.POST, consumes="application/json",
-			produces = MediaType.IMAGE_PNG_VALUE)
-	public @ResponseBody byte[] generateDiagram(@RequestBody FormData form) throws IOException{
-		
-		
-		FileHelper.getInstance();
+	@RequestMapping(value="/api/generarDiagrama", method=RequestMethod.POST,
+			produces = MediaType.IMAGE_PNG_VALUE,consumes = "multipart/form-data")
+	public @ResponseBody byte[] generateDiagram(@RequestPart("model") @Valid FormData form,
+												@RequestPart("file")  @Valid MultipartFile file) throws IOException{
+				
 		String fileContent;
 		try {
-			if(!form.getGithubUrl().isEmpty()){
-				fileContent = FileHelper.escribirEnFS(form.getGithubUrl());
+			if(!(form.getGithubUrl().isEmpty())){
+				fileContent = this.fileHelper.getContentFromGithub(form.getGithubUrl());
 			}else{
-				fileContent  = null;//Files.lines(Paths.get(path)).collect(Collectors.joining());
+				fileContent = this.fileHelper.getContentFromMultipart(file);
 			}
-			
-			//File file = new File(form.getLocalPath().toString());
-			//String path = file.getAbsolutePath();
-			
-			//String filePreParse = Files.lines(Paths.get(path)).collect(Collectors.joining());
-			
-			
+						
 			CCompiler compiler = new CCompiler();
 			AbstractSyntaxTreeConverter ast = compiler.compile(fileContent);
 			

@@ -12,9 +12,11 @@
         vm.title = 'Asistente';
         // we will store all of our form data in this object
         vm.formData = new FormDataModel();
+        vm.fileData = [];
 
         vm.$onInit = activate;
         vm.getData = getData;
+        vm.getFile = getFile;
         
         ////////////////
 
@@ -24,6 +26,10 @@
 
         function getData() {
             return vm.formData;
+        }
+        
+        function getFile() {
+            return vm.fileData;
         }
     }
 })();

@@ -17,8 +17,19 @@
         };
         
         vm.generate = function(){
+        	
+        	var formData = new FormData();
+        	
+        	if(vm.parent.getFile()[0] == null){
+        		var dummyFile = new File(["foo"], "foo.txt");
+        		vm.parent.getFile().push(dummyFile);
+        	}
+        	formData.append("file", vm.parent.getFile()[0]);
+        	formData.append('model', new Blob([JSON.stringify(vm.parent.getData())], {
+        	                type: "application/json"
+        	            }));
 	
-	    	dataFactory.generarDiagrama(vm.parent.getData())
+	    	dataFactory.generarDiagrama(formData)
 	    		.then(function (response){
 	    			var fileName = vm.parent.getData().name + '.png';
 	    			saveAs(response, fileName);

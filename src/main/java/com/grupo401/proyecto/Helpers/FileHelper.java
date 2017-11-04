@@ -2,22 +2,16 @@ package com.grupo401.proyecto.Helpers;
 
 import java.io.BufferedReader ;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public final class FileHelper {
+import org.springframework.web.multipart.MultipartFile;
+
+public class FileHelper {
 	
-	private static FileHelper fileHelper;
-	public static FileHelper getInstance(){
-		if(fileHelper == null){
-			fileHelper = new FileHelper();
-		}
-		return fileHelper;
-	}
-	
-	
-	public static String escribirEnFS(String dirUrl) throws IOException
+	public String getContentFromGithub(String dirUrl) throws IOException
 		{	
 			//set connection and url
 			URL url = new URL(dirUrl);
@@ -25,15 +19,23 @@ public final class FileHelper {
 	    	connection.setRequestMethod("GET");
 	    	connection.setDoInput(true);
 			
-			String completo = new String();
-			
-			//read and store in my string variable the whole content
-			BufferedReader reader = new BufferedReader ( new InputStreamReader(connection.getInputStream()));
-			for (String line; (line = reader.readLine()) != null;) {
-					completo = completo.concat(line);
-			}
-			reader.close();
-		    
-		    return completo;
+			return this.contentToString(connection.getInputStream());
+	}
+
+
+	public String getContentFromMultipart(MultipartFile file) throws IOException {
+		return this.contentToString(file.getInputStream());
+	}
+	
+	private String contentToString(InputStream stream) throws IOException{
+		
+		String completo = new String();
+		BufferedReader reader = new BufferedReader (new InputStreamReader(stream));
+		for (String line; (line = reader.readLine()) != null;) {
+				completo = completo.concat(line);
+		}
+		reader.close();
+	    
+	    return completo;
 	}
 }

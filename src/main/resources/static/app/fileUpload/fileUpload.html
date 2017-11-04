@@ -15,11 +15,12 @@
             	<div class="input-group">
             	<label class="input-group-btn">
             		<span class="btn btn-primary">
-            		Seleccionar archivo local&hellip; <input type="file" accept=".c" style="display: none; multiple"
-    				ngf-select="" ng-model="vm.formData.localPath" ng-disabled="vm.hasGithubUrl()" />
+            		Seleccionar archivo local&hellip; 
+            		<input type="file" upload-files  accept=".c" style="display: none; multiple"
+    				ngf-select="" ng-model="file" ng-disabled="vm.hasGithubUrl()" />
             		</span>
 				</label>
-				<input type="text" ng-model="vm.formData.localPath.name" class="form-control" readonly>
+				<input type="text" ng-model="file[0].name" class="form-control" readonly>
             	</div>
 			</div>				
             <div class="button-toolbar" layout="row" layout-align="center">	
