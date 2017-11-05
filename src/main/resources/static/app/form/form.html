@@ -1,44 +1,36 @@
+
 <div class="row">
     <div class="board">
         <!-- Circular Tab Area -->
         <div class="board-inner" id="status-buttons">
             <ul class="nav nav-tabs" id="myTab" style="background-color:white;">
                 <div class="liner"></div>
-                
                 <li>
-                    <a ui-sref-active="active" data-toggle="tab" title="Cargar archivo" style="border:0px">
-                        <span class="round-tabs one">
-                            <i class="glyphicon glyphicon-level-up" style="color:grey;"></i>
-                        </span>
+                    <a    ui-sref-active="active" title="Cargar archivo" style="border:0px">
+                        <span class="round-tabs one"><i class="fa fa-upload" style="color:grey;"></i></span>
                     </a>
-                </li>
-
-                <li>
-                    <a ui-sref-active="active" data-toggle="tab" title="Editar">
-                        <span class="round-tabs two">
-                            <i class="glyphicon glyphicon-pencil" style="color:grey"></i>
-                        </span> 
+                    </li>
+				<li>
+                    <a   ui-sref-active="active" title="Editar">
+                        <span class="round-tabs two"><i class="fa fa-pencil-square-o" style="color:grey"></i></span> 
                     </a>
-                </li>
-
-                <li>
-                    <a ui-sref-active="active" data-toggle="tab" title="Exportar">
-                        <span class="round-tabs three">
-                            <i class="glyphicon glyphicon-ok" style="color:grey"></i>
-                        </span>
-                    </a>
-                </li>
-                            
+                    </li>
+				<li>
+                    <a   ui-sref-active="active" title="Exportar">
+                    	<span class="round-tabs three"><i class="fa fa-check" style="color:grey"></i></span>
+                    </a>  
+                </li>  
             </ul>
             <div class="clearfix"></div>
         </div>
         <!-- End Circular Tab Area -->
 
         <!-- Content Area -->
-        <div class="tab-content">
+          <form id="signup-form" ng-submit="processForm()">
+
             <!-- Nested view  -->
-            <div ui-view></div>
-        </div>
+            <div ui-view style="margin-top:45px"></div>
+        	</form>
         <!-- End Content Area -->
     </div>
 

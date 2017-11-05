@@ -1,88 +1,93 @@
 <!DOCTYPE html>
 <html data-ng-app="code2chart">
-
-<head>
-
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css"></link>
-<link rel="stylesheet" href="content/css/riliwan-rabo.css"></link>
-<link rel="stylesheet" href="content/css/style.css"></link>
-<link rel="stylesheet" href="https://gitcdn.link/repo/angular/bower-material/master/angular-material.css"></link>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.css"></link>
-
-<link rel="icon" href="/images/logo.png"></link>
-
-
-</head>
-<body>
-	<div layout="row" flex="" layout-align="start"  class="ng-cloak" >
-	    <md-nav-bar md-selected-nav-item="currentNavItem">
-		  <md-nav-item md-nav-sref="home">
-		  	<img src="/images/logo.png" alt="Code2Chart" style="width:55%"></img>
-		  </md-nav-item>
-		  	  <md-nav-item md-nav-sref="home">Inicio</md-nav-item>
-			  <md-nav-item md-nav-sref="#">Descargar</md-nav-item>
-			  <md-nav-item md-nav-sref="form.fileUpload" sref-opts="{reload: true, notify: true}">
-			    Probar
-			  </md-nav-item>
-			  <md-nav-item md-nav-sref="about">Sobre Nosotros</md-nav-item>
-		</md-nav-bar>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="stylesheet" href="css/bootstrap.min.css"></link>
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css"></link>
+		<link rel="stylesheet" href="content/css/riliwan-rabo.css"></link>
+		<link rel="stylesheet" href="content/css/style.css"></link>
+		<link rel="stylesheet" href="https://gitcdn.link/repo/angular/bower-material/master/angular-material.css"></link>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.css"></link>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic"></link>
+		<link rel="icon" href="/images/logo.png"></link>
+	</head>
+	<body>
+    	<div layout="column">
+			<nav class="ng-cloak navbar navbar-inverse md-display-4" style="font-size:17px;background:transparent !important;border:0px">
+				  <div class="container-fluid">
+				    <div class="navbar-header">
+				      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>                        
+				      </button>
+				      <a class="navbar-brand" href="#"><img ng-src="/images/loguito.png" alt="Code2Chart" style="fill:wheat"></img></a>
+				  </div>
+				  <div class="collapse navbar-collapse" id="myNavbar">
+				    <ul class="nav navbar-nav">
+						
+				       <li><a ui-sref="home" ui-sref-active="active">Inicio</a></li>
+				       <li><a ui-sref="descargar" ui-sref-active="active">Descargar</a></li>
+				       <li><a ui-sref="form.fileUpload" ui-sref-active="active" sref-opts="{reload: true, notify: true}">Probar</a></li>
+				       <li><a ui-sref="about" ui-sref-active="active">Sobre Nosotros</a></li>
+				     </ul>
+				   </div>
+				 </div>
+			</nav>
+			<div class="container" style="background-color:white;"	>
+				<div data-ui-view=""></div>
+			</div>
+			<div class="piedepagina ng-cloak" flex="10">
+				  <p class="home-parag" style="text-align:center">
+					 Creado por el equipo de Code2Chart
+				  </p>
+			</div>
 		</div>
-			
- 	 <!-- views will be injected here -->
-    <section style="background:#ffffff;">
-        <div class="container">
-            <div data-ui-view=""></div>
-        </div>
-        
-    </section>
-    
-    <!-- js libraries -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.0-rc.1/angular-ui-router.min.js"></script>
- 	   
-    <!-- AngularJS Material Dependencies -->
-   	
-   	<script src="lib/ng-file-upload-shim.min.js"></script>
-    <script src="lib/ng-file-upload.min.js"></script>
-    <script src="lib/FileSaver.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular-animate.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular-aria.js"></script>
-    <script src="https://gitcdn.link/repo/angular/bower-material/master/angular-material.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.js"></script>
-    <script type="text/javascript" src="content/js/contacto.js"></script>
-    
-    <!-- Bootstrapping -->
-    <script src="app/app.module.js"></script>
- 
-    <!-- Wizard - Form feature -->
-    <script src="app/form/form.component.js"></script>
-    <script src="app/form/form.controller.js"></script>
-    <script src="app/form/formData.value.js"></script>
-    
-    <!-- Homepage -->
-    <script src="app/home/home.component.js"></script>
-    <script src="app/home/home.controller.js"></script>
- 
-    <!-- Homepage -->
-    <script src="app/about/about.component.js"></script>
-    <script src="app/about/about.controller.js"></script>
- 
-    <!-- Wizard - fileUpload feature -->
-    <script src="app/fileUpload/fileUpload.component.js"></script>
-    <script src="app/fileUpload/fileUpload.controller.js"></script>
- 
-    <!-- Wizard - configure feature -->
-    <script src="app/configure/configure.component.js"></script>
-    <script src="app/configure/configure.controller.js"></script>
- 
-    <!-- Wizard - export feature -->
-    <script src="app/export/export.component.js"></script>
-    <script src="app/export/export.controller.js"></script>
-    <script src="app/export/export.factory.js"></script>
-    
-</body>
+    	
+	    <!-- js libraries -->
+	    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+	    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.0-rc.1/angular-ui-router.min.js"></script>
+	 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	 	   
+	    <!-- AngularJS Material Dependencies -->
+	   	
+	   	<script src="lib/ng-file-upload-shim.min.js"></script>
+	    <script src="lib/ng-file-upload.min.js"></script>
+	    <script src="lib/FileSaver.min.js"></script>
+	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular.js"></script>
+	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular-animate.js"></script>
+	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular-aria.js"></script>
+	    <script src="https://gitcdn.link/repo/angular/bower-material/master/angular-material.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.js"></script>	       
+	    <!-- Bootstrapping -->
+	    <script src="app/app.module.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	    <!-- Wizard - Form feature -->
+	    <script src="app/form/form.component.js"></script>
+	    <script src="app/form/form.controller.js"></script>
+	    <script src="app/form/formData.value.js"></script>
+	    
+	    <!-- Homepage -->
+	    <script src="app/home/home.component.js"></script>
+	    <script src="app/home/home.controller.js"></script>
+	 
+	    <!-- Homepage -->
+	    <script src="app/about/about.component.js"></script>
+	    <script src="app/about/about.controller.js"></script>
+	 
+	    <!-- Wizard - fileUpload feature -->
+	    <script src="app/fileUpload/fileUpload.component.js"></script>
+	    <script src="app/fileUpload/fileUpload.controller.js"></script>
+	 
+	    <!-- Wizard - configure feature -->
+	    <script src="app/configure/configure.component.js"></script>
+	    <script src="app/configure/configure.controller.js"></script>
+	 
+	    <!-- Wizard - export feature -->
+	    <script src="app/export/export.component.js"></script>
+	    <script src="app/export/export.controller.js"></script>
+	    <script src="app/export/export.factory.js"></script>
 
+	</body>
 </html>
