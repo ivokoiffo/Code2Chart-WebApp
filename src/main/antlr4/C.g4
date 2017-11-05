@@ -1,5 +1,9 @@
 grammar C;
 
+@header{ 
+	package cUtils;
+}
+
 primaryExpression
     :   Identifier
     |   Constant

@@ -5,10 +5,7 @@ import java.io.InputStream;
 import java.util.LinkedList;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Null;
-
 import org.apache.commons.io.IOUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +24,7 @@ import com.grupo401.proyecto.XmlBuilder;
 import com.grupo401.proyecto.Helpers.FileHelper;
 import com.grupo401.proyecto.Helpers.ImageHelper;
 import com.grupo401.proyecto.diagram.MyDiagram;
+
 
 @Controller
 public class MainController {

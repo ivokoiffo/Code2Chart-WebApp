@@ -75,7 +75,10 @@ public class MyDiagram {
 				DiagramNode target1 = nodeMap.get(idsTarget.get(0));
 				DiagramNode target2 = nodeMap.get(idsTarget.get(1));
 				diagram.getFactory().createDiagramLink(origin, target1).setText("SI");
-				diagram.getFactory().createDiagramLink(origin, target2).setText("NO");
+				
+				if(target2 != null){
+					diagram.getFactory().createDiagramLink(origin, target2).setText("NO");
+				}
 				nodosYaLinkeados.add(link.getAttribute("origin"));
 				}
 			}
