@@ -18,13 +18,14 @@
             		<span class="btn btn-primary">
             		Seleccionar archivo local&hellip; <input type="file" accept=".c" style="display: none; multiple;"
     				ngf-select="" ng-model="vm.formData.localPath" ng-disabled="vm.hasGithubUrl()" />
-            		</span>
+
+					</span>
 				</label>
 				<input type="text" ng-model="vm.formData.localPath.name" class="form-control" readonly>
             	</div>
 			</div>				
             <div class="button-toolbar" layout="row" layout-align="center" style="margin-top:40px">	
-			<md-button class="md-fab" ui-sref="form.configure" ng-disabled="vm.anyFile()">	
+			<md-button class="md-fab next-step" ui-sref="form.configure" ng-disabled="vm.anyFile()">	
             	<i class="fa fa-arrow-right fa-lg" aria-hidden="true"></i>
 			</md-button>
         </div>    

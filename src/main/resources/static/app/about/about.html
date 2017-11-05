@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="app/about/social.css">
 
 <div layout="row" layout-align="center center"  style="margin-top:30px">
-  <h3 class="head text-center">El equipo de Code2Chart</h3>
+  <p class="md-display-4 text-center" style="font-size:50px">El equipo de Code2Chart</p>
 </div>
 <md-content layout="row" layout-align="space-around space-between" layout-wrap style="margin-top:10px">
   	<div ng-repeat="member in team" flex-xs flex-gt-xs="20" layout="row" >
@@ -11,7 +11,7 @@
         	<img ng-src={{member.ruta}} class="md-card-image" alt={{member.name}} />
         <md-card-title>
           <md-card-title-text layout-fill>
-            <span class="md-headline">{{member.name}}</span>
+            <span class="md-subhead" style="font-size:22px;">{{member.name}}</span>
           </md-card-title-text>
           </md-card-title>
           <p>

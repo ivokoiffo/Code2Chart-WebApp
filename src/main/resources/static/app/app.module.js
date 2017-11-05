@@ -2,7 +2,7 @@
     'use strict';
 
     // Creating our angular app and inject ui-router 
-    var app = angular.module('code2chart', ['ui.router','ngMaterial','ngFileUpload','toaster'])
+    var app = angular.module('code2chart', ['ui.router','ngMaterial','ngFileUpload','toaster','ngAnimate'])
     			
     app.config(function($mdThemingProvider) {
 

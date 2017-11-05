@@ -42,7 +42,7 @@
     			"Trabaja en Siemens","content/images/santiago.png","https://www.linkedin.com/in/santiago-varela-379658a9/","https://github.com/santiagojvarela");
     	var jony = new Person("Jonatan Martinez",22,"",
     			"Trabaja en EY","content/images/rodrigo.png","https://www.linkedin.com/in/jonatan-gabriel-martinez-47a47093/","https://github.com/jonmartinez123");
-    	var nico = new Person("Nicolas Taccari",22,"",
+    	var nico = new Person("Nicolás Taccari",22,"",
     			"Trabaja en ExxonMobil","content/images/rodrigo.png","https://www.linkedin.com/in/nicolas-taccari-84a296139/","https://github.com/nicoTaccari");
     	
     	$scope.team.push(rodri);

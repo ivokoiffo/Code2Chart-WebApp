@@ -9,11 +9,12 @@
 		<link rel="stylesheet" href="https://gitcdn.link/repo/angular/bower-material/master/angular-material.css"></link>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.css"></link>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic"></link>
 		<link rel="icon" href="/images/logo.png"></link>
 	</head>
 	<body>
     	<div layout="column">
-			<nav class="ng-cloak navbar navbar-inverse" style="background:transparent !important;border:0px">
+			<nav class="ng-cloak navbar navbar-inverse md-display-4" style="font-size:17px;background:transparent !important;border:0px">
 				  <div class="container-fluid">
 				    <div class="navbar-header">
 				      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -26,10 +27,10 @@
 				  <div class="collapse navbar-collapse" id="myNavbar">
 				    <ul class="nav navbar-nav">
 						
-				       <li><a ui-sref="home">Inicio</a></li>
-				       <li><a ui-sref="descargar">Descargar</a></li>
-				       <li><a ui-sref="form.fileUpload" sref-opts="{reload: true, notify: true}">Probar</a></li>
-				       <li><a ui-sref="about">Sobre Nosotros</a></li>
+				       <li><a ui-sref="home" ui-sref-active="active">Inicio</a></li>
+				       <li><a ui-sref="descargar" ui-sref-active="active">Descargar</a></li>
+				       <li><a ui-sref="form.fileUpload" ui-sref-active="active" sref-opts="{reload: true, notify: true}">Probar</a></li>
+				       <li><a ui-sref="about" ui-sref-active="active">Sobre Nosotros</a></li>
 				     </ul>
 				   </div>
 				 </div>
