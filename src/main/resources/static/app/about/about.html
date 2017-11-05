@@ -2,10 +2,10 @@
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="app/about/social.css">
 
-<div layout="row" layout-align="center center"  style="margin-top:40px">
-  <h2 class="md-primary">El equipo de Code2Chart</h2>
+<div layout="row" layout-align="center center"  style="margin-top:30px">
+  <h3 class="head text-center">El equipo de Code2Chart</h3>
 </div>
-<md-content layout="row" layout-align="space-around space-between" layout-wrap layout-sm="row" class="md-padding" layout-xs="row" style="margin-top:10px">
+<md-content layout="row" layout-align="space-around space-between" layout-wrap style="margin-top:10px">
   	<div ng-repeat="member in team" flex-xs flex-gt-xs="20" layout="row" >
 	<md-card md-theme="{{'default'}}" md-theme-watch>
         	<img ng-src={{member.ruta}} class="md-card-image" alt={{member.name}} />
@@ -23,8 +23,8 @@
           </p>
         <div layout="row" layout-align="center">
             <ul class="social-network social-circle">
-                <li><a href={{member.rutaLinkedin}} class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-            	<li><a href={{member.rutaGithub}} class="icoGithub" title="Github"><i class="fa fa-github"></i></a></li>
+                <li><a id="icono" href={{member.rutaLinkedin}} class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+            	<li><a id="icono" href={{member.rutaGithub}} class="icoGithub" title="Github"><i class="fa fa-github"></i></a></li>
         	</ul>				
         </div>
 	</md-card>

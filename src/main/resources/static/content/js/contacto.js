@@ -1,5 +1,4 @@
-<script>
-!function() {
+(function () {
   var t;
   if (t = window.driftt = window.drift = window.driftt || [], !t.init) return t.invoked ? void (window.console && console.error && console.error("Drift snippet included twice.")) : (t.invoked = !0, 
   t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], 
@@ -16,7 +15,6 @@
     o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + i + "/" + t + ".js", 
     n = document.getElementsByTagName("script")[0], n.parentNode.insertBefore(o, n);
   });
-}();
-drift.SNIPPET_VERSION = '0.3.1';
-drift.load('sucsnhhayg87');
-</script>
+  drift.SNIPPET_VERSION = '0.3.1';
+	drift.load('sucsnhhayg87');
+})();

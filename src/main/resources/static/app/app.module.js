@@ -37,6 +37,11 @@
                 	component: 'homeComponent'
                 })
                 
+               .state('descargar',{
+                	url:'/descargar',
+                	component: 'descargarComponent'
+                })
+                
                 .state('about',{
                 	url:'/about',
                 	component: 'aboutComponent'
