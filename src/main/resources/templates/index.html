@@ -1,6 +1,31 @@
 <!DOCTYPE html>
 <html data-ng-app="code2chart">
 	<head>
+	
+		<script type="text/javascript">
+			window.gapiCallbacks=[];
+			
+			function gapiLoaded(){
+				gapi.auth.init(function() {
+					gapi.client.load('drive', 'v2').then(function () {
+						var GapiQueue = function () {
+							this.push = function (callback) {
+								setTimeout(callback, 0);
+							};
+						};
+						var _old_gapiCallbacks = window.gapiCallbacks;
+						window.gapiCallbacks = new GapiQueue();
+						_old_gapiCallbacks.forEach(function (callback) {
+							window.gapiCallbacks.push(callback);
+						});
+					},function(reason){
+						console.err(reason);
+					});
+				});
+			}
+		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+		
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<link rel="stylesheet" href="css/bootstrap.min.css"></link>
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css"></link>
@@ -92,6 +117,7 @@
 	    <script src="app/export/export.factory.js"></script>
 	    <script src="app/export/drive-service.js"></script>
 	    <script src="app/export/gapi-auth-service.js"></script>
-
+	
+	<script src="https://apis.google.com/js/client.js?onload=gapiLoaded"></script>
 	</body>
 </html>

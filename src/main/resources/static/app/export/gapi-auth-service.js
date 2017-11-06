@@ -15,17 +15,36 @@ angular.module('code2chart')
 
         
         return {
+            checkLogin:function(){
+                var deferred = $q.defer();
+
+                gapiCallbacks.push(function () {
+	                gapi.auth.authorize(getConfig(true), function (authResult) {
+				        if (authResult && !authResult.error) {
+				            deferred.resolve(gapi.auth.getToken().access_token);
+				        } else {
+				            deferred.reject(authResult);
+				        }
+				    })
+                });
+
+                return deferred.promise;
+            },
 
             login:function() {
                 var deferred = $q.defer();
 
-                gapi.auth.authorize(getConfig(false), function (authResult) {
-                    if (authResult && !authResult.error) {
-                        deferred.resolve(gapi.auth.getToken().access_token);
-                    } else {
-                        deferred.reject(authResult);
-                    }
-                })
+                this.checkLogin().then(function (accessToken) {
+                    deferred.resolve(accessToken);
+                }, function () {
+                    gapi.auth.authorize(getConfig(false), function (authResult) {
+                        if (authResult && !authResult.error) {
+                            deferred.resolve(gapi.auth.getToken().access_token);
+                        } else {
+                            deferred.reject(authResult);
+                        }
+                    })
+                });
 
                 return deferred.promise;
             }

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('code2chart')
-    .factory('driveService', ['$q',function ($q,gapiAuthService) {
+    .factory('driveService', ['$q','gapiAuthService',function ($q,gapiAuthService) {
         function createFolder(){
             return gapi.client.drive.files.insert(
                 {

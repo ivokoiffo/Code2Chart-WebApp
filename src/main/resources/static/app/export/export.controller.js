@@ -37,6 +37,15 @@
 	    			toaster.error("No se ha podido eliminar el elemento"); 
 	    		});
         };
+        
+        $scope.checkingLogin=true;
+        gapiAuthService.checkLogin().then(function(){
+            $scope.loggedIn=true;
+        },function(){
+            $scope.loggedIn=false;
+        }).finally(function(){
+            $scope.checkingLogin=false;
+        });
 
         $scope.login=function(){
             gapiAuthService.login().then(function(){
