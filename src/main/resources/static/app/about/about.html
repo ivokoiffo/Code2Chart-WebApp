@@ -1,24 +1,27 @@
+<meta meta charset=utf-8>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		
 <div ng-controller="aboutController">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="app/about/social.css">
 
 <div layout="row" layout-align="center center"  style="margin-top:30px">
-  <p class="md-display-4 text-center" style="font-size:50px">El equipo de Code2Chart</p>
+  <p class="md-display-4 text-center" style="font-size:50px;color:white">El equipo de Code2Chart</p>
 </div>
-<md-content layout="row" layout-align="space-around space-between" layout-wrap style="margin-top:10px">
+<md-content layout="row" layout-align="space-around space-between" layout-wrap style="margin-top:10px;background-color:transparent">
   	<div ng-repeat="member in team" flex-xs flex-gt-xs="20" layout="row" >
-	<md-card md-theme="{{'default'}}" md-theme-watch>
+	<md-card style="background-color:transparent" md-theme-watch>
         	<img ng-src={{member.ruta}} class="md-card-image" alt={{member.name}} />
         <md-card-title>
           <md-card-title-text layout-fill>
-            <span class="md-subhead" style="font-size:22px;">{{member.name}}</span>
+            <span class="md-subhead" style="font-size:22px;color:white">{{member.name}}</span>
           </md-card-title-text>
           </md-card-title>
-          <p>
+          <p style="color:white">
             {{member.bio}}
           </p>
           <br/><br/>
-          <p>
+          <p style="color:white">
           {{member.minibio}}
           </p>
         <div layout="row" layout-align="center">

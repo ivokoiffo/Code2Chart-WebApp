@@ -796,7 +796,8 @@ button.md-button::-moz-focus-inner {
     padding: 0;
     background: none; }
   .md-button.md-raised:not([disabled]) {
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26); }
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    background-color: transparent !important; }
   .md-button.md-icon-button {
     margin: 0 6px;
     height: 40px;
@@ -2284,6 +2285,7 @@ md-input-container {
   /*
    * The .md-input class is added to the input/textarea
    */ }
+
   md-input-container:after {
     content: '';
     display: table;
@@ -3945,6 +3947,7 @@ md-optgroup {
     background-color: transparent; }
   md-select-menu {
     border: 1px solid #fff; } }
+
 
 md-select-menu[multiple] md-option.md-checkbox-enabled {
   padding-left: 40px;
@@ -18139,3 +18142,14 @@ md-toolbar {
 @media print {
   .hide-print:not(.show-print):not(.show) {
     display: none !important; } }
+    
+    
+.md-button.md-default-theme.md-raised, .md-button.md-raised {
+    color: rgb(33,33,33);
+    background-color: transparent !important;
+}
+
+
+.descargar-archivo{
+	background-color:transparent !important;
+}

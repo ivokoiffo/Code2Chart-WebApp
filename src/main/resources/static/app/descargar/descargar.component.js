@@ -4,7 +4,7 @@
     angular
         .module('code2chart')
         .component('descargarComponent', {
-            templateUrl:  'app/home/home.html',
+            templateUrl:  'app/descargar/descargar.html',
             controller: 'descargarController',
             controllerAs: 'descargar'
         })
