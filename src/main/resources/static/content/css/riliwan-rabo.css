@@ -18,7 +18,7 @@
 }
 
 .board > div.board-inner{
-    background: #fafafa url(http://subtlepatterns.com/patterns/geometry2.png);
+    background-color:transparent;
     background-size: 30%;
 }
 
@@ -53,7 +53,7 @@ span.round-tabs{
     line-height: 70px;
     display: inline-block;
     border-radius: 100px;
-    background: white;
+    background: transparent;
     z-index: 2;
     position: absolute;
     left: 0;

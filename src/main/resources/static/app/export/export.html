@@ -1,11 +1,13 @@
-
+<meta meta charset=utf-8>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		
 <div class="tab-pane fade in active">
     <div class="form-horizontal">
-        <h4 class="head text-center">{{vm.title}}</h4>
+        <h4 class="head text-center" style="color:white">{{vm.title}}</h4>
         <br/>
         <div layout='row' layout-align="center center">
         	<div class="col-sm-5 col-xs-10" layout='column'>
-				<md-button class="md-raised" ng-click="vm.generate()">
+				<md-button class="descargar-archivo" ng-click="vm.generate()">
           			<i class="fa fa-download fa-5x" aria-hidden="true"></i>
           			<p>Descargar archivo</p>
   				</md-button>
@@ -14,7 +16,6 @@
 				<div ng-show="checkingLogin">Checking login status...</div>
 				Login status:{{loggedIn}}
 				<md-button class="md-raised" ng-disabled="checkingLogin || loggedIn" ng-click="login()">Log In</md-button>
-			
 			<div ng-show="loggedIn">
 				<md-button class="md-raised" ng-disabled="uploading" ng-click="clickFileUpload()">Upload image</md-button>
 				<input type="file" id="uploadImage" accept="image/*" 
@@ -23,12 +24,13 @@
 		     </div>
 			</div>
         	<div layout="row" layout-align="center end">
-            <md-button class="md-fab" ui-sref="form.configure">	
-            	<i class="fa fa-arrow-left fa-lg" aria-hidden="true"></i>
-			</md-button>	
-			<md-button class="md-fab" ng-click="vm.redirectToNewForm()">	
-            	<i class="fa fa-home fa-lg" aria-hidden="true"></i>
-			</md-button>
+		            <md-button class="md-fab" ui-sref="form.configure">	
+		            	<i class="fa fa-arrow-left fa-lg" aria-hidden="true"></i>
+					</md-button>	
+					<md-button class="md-fab" ng-click="vm.redirectToNewForm()">	
+		            	<i class="fa fa-home fa-lg" aria-hidden="true"></i>
+					</md-button>
+		        </div>
         </div>    
     </div>
 </div>

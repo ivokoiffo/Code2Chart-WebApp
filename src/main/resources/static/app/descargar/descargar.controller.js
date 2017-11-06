@@ -5,8 +5,8 @@
         .module('code2chart')
         .controller('descargarController', descargarController);
  
-    homeController.$inject = ['$scope'];
+    descargarController.$inject = ['$scope'];
  
-    function homeController($scope) {
+    function descargarController($scope) {
     }
 })();

@@ -1,3 +1,28 @@
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: white !important;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: white !important;
+   opacity:1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: white !important;
+   opacity:1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: white !important;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color: white !important;
+}
+md-input-container.md-default-theme .md-placeholder, md-input-container .md-placeholder, md-input-container.md-default-theme label, md-input-container label {
+    color: white !important;
+}
+
+md-input-container.md-default-theme .md-input, md-input-container .md-input {
+    color: rgba(0,0,0,0.87);
+    border-color: white !important;
+}
 .btn-default {
     border-color: #ccc;
 }
