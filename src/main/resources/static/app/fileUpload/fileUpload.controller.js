@@ -21,6 +21,12 @@
             });  
         });  
         
+        $scope.clearFile = function(){
+        	while(($scope.file.length > 0)){
+        		$scope.file.pop();
+        	}
+        }
+        
         vm.hasGithubUrl = function(){
         	return (vm.formData.githubUrl.length > 0);
         };

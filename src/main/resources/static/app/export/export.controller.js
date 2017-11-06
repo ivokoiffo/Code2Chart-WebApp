@@ -11,10 +11,21 @@
         var vm = this;
         vm.title = '¿Que desea hacer con su archivo?';
         vm.formData = {};
+        var saveLocal = true;
                 
         vm.redirectToNewForm = function(){
         	$location.url('/fileUpload.html');
         };
+        
+        vm.generateLocal = function(){
+        	saveLocal = true;
+        	vm.generate();
+        }
+        
+        vm.generateDrive = function(){
+        	saveLocal = false;
+        	vm.generate();
+        }
         
         vm.generate = function(){
         	
@@ -32,9 +43,17 @@
 	    	dataFactory.generarDiagrama(formData)
 	    		.then(function (response){
 	    			var fileName = vm.parent.getData().name + '.png';
-	    			saveAs(response, fileName);
+	    			if(saveLocal){
+		    			saveAs(response, fileName);
+	    			}else{
+	    				var driveFile = new File([response],fileName);
+	    				var filesArray = [];
+	    				filesArray.push(driveFile);
+	    				$scope.upload(filesArray);
+	    			}
+	    			
 	    		}, function (error){
-	    			toaster.error("No se ha podido eliminar el elemento"); 
+	    			toaster.error("No se ha podido generar el diagrama. Vuelva a intentarlo"); 
 	    		});
         };
         
@@ -60,14 +79,10 @@
 
         $scope.images=[];
 
-        $scope.clickFileUpload=function(){
-            document.getElementById('uploadImage').click();
-        };
-
-        $scope.upload=function(){
+        $scope.upload=function(filesArray){
             $scope.uploading=true;
-            var allFiles=document.getElementById('uploadImage').files;
-            var file=allFiles[0];
+            
+            var file = filesArray[0];
 
             driveService.insertFile(file, file.name).then(function(link){
                 $scope.images.push(link);

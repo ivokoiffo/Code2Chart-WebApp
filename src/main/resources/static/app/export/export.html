@@ -7,15 +7,17 @@
         <br/>
         <div layout='row' layout-align="center center">
         	<div class="col-sm-5 col-xs-10" layout='column'>
-				<md-button class="descargar-archivo" ng-click="vm.generate()">
-          			<i class="fa fa-download fa-5x" aria-hidden="true" style="color:white"></i>
-          			<p  style="color:white">Descargar archivo</p>
+				<md-button class="descargar-archivo" ng-click="vm.generateLocal()">
+          			<i class="fa fa-download fa-5x" aria-hidden="true"></i>
+          			<p>Descargar archivo</p>
   				</md-button>
   			</div>
         	<div class="col-sm-5 col-xs-10">
-				<md-button class="md-raised" ng-show="checkingLogin || loggedIn" ng-click="login()">Log In</md-button>
-			<div ng-hide="loggedIn">
-				<md-button class="md-raised" ng-disabled="uploading" ng-click="clickFileUpload()">Cargar image</md-button>
+				<div ng-show="checkingLogin">Checking login status...</div>
+				Login status:{{loggedIn}}
+				<md-button class="md-raised" ng-disabled="checkingLogin || loggedIn" ng-click="login()">Log In</md-button>
+			<div ng-show="loggedIn">
+				<md-button class="md-raised" ng-disabled="uploading" ng-click="vm.generateDrive()">Upload image</md-button>
 				<input type="file" id="uploadImage" accept="image/*" 
 					onchange="angular.element(this).scope().upload()" style="display:none;">
 				<div ng-show="uploading">Cargando...</div>		
