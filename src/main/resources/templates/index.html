@@ -31,6 +31,7 @@
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css"></link>
 		<link rel="stylesheet" href="content/css/riliwan-rabo.css"></link>
 		<link rel="stylesheet" href="content/css/style.css"></link>
+		<link rel="stylesheet" href="css/toaster.css"></link>
 		<link rel="stylesheet" href="https://gitcdn.link/repo/angular/bower-material/master/angular-material.css"></link>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.css"></link>
@@ -82,14 +83,20 @@
 	   	<script src="lib/ng-file-upload-shim.min.js"></script>
 	    <script src="lib/ng-file-upload.min.js"></script>
 	    <script src="lib/FileSaver.min.js"></script>
+	    <script src="lib/toaster.js"></script>
+	    <script src="lib/lodash.js"></script>
 	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular.js"></script>
 	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular-animate.js"></script>
 	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular-aria.js"></script>
 	    <script src="https://gitcdn.link/repo/angular/bower-material/master/angular-material.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.js"></script>	       
 	    <!-- Bootstrapping -->
-	    <script src="app/app.module.js"></script>
+	    
   		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	    
+	    <!-- parent js -->
+	    <script src="app/app.module.js"></script>
+	    
 	    <!-- Wizard - Form feature -->
 	    <script src="app/form/form.component.js"></script>
 	    <script src="app/form/form.controller.js"></script>
@@ -98,6 +105,7 @@
 	    <!-- Homepage -->
 	    <script src="app/home/home.component.js"></script>
 	    <script src="app/home/home.controller.js"></script>
+	    <script src="app/toaster_controller.js"></script>
 	 
 	    <!-- About us -->
 	    <script src="app/about/about.component.js"></script>
@@ -124,5 +132,6 @@
 	    <script src="app/export/gapi-auth-service.js"></script>
 	
 	<script src="https://apis.google.com/js/client.js?onload=gapiLoaded"></script>
+	<toaster-container toaster-options="{'newest-on-top':true}"></toaster-container>
 	</body>
 </html>

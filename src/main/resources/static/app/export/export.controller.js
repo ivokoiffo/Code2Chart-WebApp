@@ -45,6 +45,7 @@
 	    			var fileName = vm.parent.getData().name + '.png';
 	    			if(saveLocal){
 		    			saveAs(response, fileName);
+		    			toaster.success("Su archivo ha sido descargado con exito!");
 	    			}else{
 	    				var driveFile = new File([response],fileName);
 	    				var filesArray = [];
@@ -53,7 +54,6 @@
 	    			}
 	    			
 	    		}, function (error){
-	    			alert("not found");
 	    			toaster.error("No se ha podido generar el diagrama. Vuelva a intentarlo"); 
 	    		});
         };

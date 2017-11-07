@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('code2chart')
-    .factory('driveService', ['$q','gapiAuthService',function ($q,gapiAuthService) {
+    .factory('driveService', ['$q','gapiAuthService','toaster',function ($q,gapiAuthService,toaster) {
         function createFolder(){
             return gapi.client.drive.files.insert(
                 {
@@ -119,6 +119,7 @@ angular.module('code2chart')
                         return waitForFileToBecomeActive(file.id).then(function(){
                             return insertPermission(file).then(function(){
                                 return file.webContentLink;
+                                toaster.success("Su archivo ha sido subido a su cuenta de Google Drive")
                             });
                         });
                     });
