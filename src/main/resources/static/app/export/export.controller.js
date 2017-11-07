@@ -13,21 +13,29 @@
         vm.formData = {};
         var saveLocal = true;
                 
-        vm.redirectToNewForm = function(){
+        $scope.redirectToNewForm = function(){
         	$location.url('/fileUpload.html');
         };
         
-        vm.generateLocal = function(){
+        $scope.generateLocal = function(){
         	saveLocal = true;
-        	vm.generate();
+        	$scope.generate();
         }
         
-        vm.generateDrive = function(){
+        $scope.checkConnection = function(){
         	saveLocal = false;
-        	vm.generate();
+        	$scope.check();
         }
         
-        vm.generate = function(){
+        $scope.generateDrive = function(){
+        	if(!($scope.loggedIn)){
+        		$scope.login();
+        	}    	
+        	
+        	$scope.generate();
+        }
+        
+        $scope.generate = function(){
         	
         	var formData = new FormData();
         	
@@ -58,15 +66,16 @@
 	    		});
         };
         
-        $scope.checkingLogin=true;
-        gapiAuthService.checkLogin().then(function(){
-            $scope.loggedIn=true;
-        },function(){
-            $scope.loggedIn=false;
-        }).finally(function(){
-            $scope.checkingLogin=false;
-        });
-
+        $scope.check = function(){
+        	gapiAuthService.checkLogin().then(function(){
+                $scope.loggedIn=true;
+            },function(){
+                $scope.loggedIn=false;
+            }).finally(function(){
+                $scope.generateDrive();
+            })
+        };
+        
         $scope.login=function(){
             gapiAuthService.login().then(function(){
                 $scope.loggedIn=true;
