@@ -4,7 +4,6 @@ import org.antlr.v4.runtime.*;
 
 import cUtils.CLexer;
 import cUtils.CParser;
-import exceptions.UnableToParseFileException;
 
 
 public class CCompiler {
@@ -24,7 +23,6 @@ public class CCompiler {
 			ast.setID(0);
 			
 		} catch (Exception e) {
-			new UnableToParseFileException();
 		}
 		
 		return ast;

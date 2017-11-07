@@ -1,6 +1,7 @@
 package com.grupo401.proyecto;
 
-import java.io.File; 	
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.LinkedList;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -13,8 +14,6 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-
-import exceptions.UnableToCreateFileException;
 
 public class XmlBuilder {
 	
@@ -141,13 +140,13 @@ public class XmlBuilder {
 	}	
 */
 	
-	public XmlBuilder build() {
+	public XmlBuilder build() throws FileNotFoundException {
 		try {
 			//TODO cambiar path del file
 			result = new StreamResult(this.file);
 			transformer.transform(source, result);
 		} catch (TransformerException e) {
-			new UnableToCreateFileException("mario");
+			throw new FileNotFoundException();
 		}
 		return this;
 	}

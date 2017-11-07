@@ -10,14 +10,12 @@ import org.junit.Test;
 
 import com.grupo401.proyecto.diagram.MyDiagram;
 
-import exceptions.UnableToCreateFileException;
-
 
 public class ParserTest {
 	
 	@Test
 	public void testCompiler1() throws Exception {
-		File file = new File("hello1.c");
+		File file = new File("hello6.c");
 		String path = file.getAbsolutePath();
 		
 		String filePreParse = Files.lines(Paths.get(path)).collect(Collectors.joining());
@@ -41,7 +39,7 @@ public class ParserTest {
 //		mainFrame.setVisible(true);
 	}
 	
-	@Test
+	/*@Test
 	public void testCompiler2() throws Exception {
 		File file = new File("hello2.c");
 		String path = file.getAbsolutePath();
@@ -176,6 +174,5 @@ public class ParserTest {
 		builder.build();
 		
 		MyDiagram mainFrame = new MyDiagram(builder.getFile().getAbsolutePath(), "diagrama5.png",null,null);
-//		mainFrame.setVisible(true);
-	}
+//		m*/
 }

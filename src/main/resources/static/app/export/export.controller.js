@@ -53,6 +53,7 @@
 	    			}
 	    			
 	    		}, function (error){
+	    			alert("not found");
 	    			toaster.error("No se ha podido generar el diagrama. Vuelva a intentarlo"); 
 	    		});
         };

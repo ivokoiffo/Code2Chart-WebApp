@@ -2,6 +2,7 @@ package com.grupo401.proyecto;
 
 import static org.junit.Assert.*;
 
+import java.io.FileNotFoundException;
 import java.util.LinkedList;
 
 import org.junit.Before;
@@ -24,17 +25,18 @@ public class XmlBuilderTest {
 	}
 	
 	@Test
-	public void structureCreation(){
+	public void structureCreation() throws FileNotFoundException
+	{
 		builder.setXmlStructure().build();
 	}
 	
 	@Test
-	public void appendNode(){
+	public void appendNode() throws FileNotFoundException{
 		builder.setXmlStructure().appendNode(0, "decision", "inicio").build();
 	}
 	
 	@Test
-	public void appendLink(){
+	public void appendLink() throws FileNotFoundException{
 		LinkedList<Integer> end = new LinkedList<Integer>();
 		end.add(0);
 		

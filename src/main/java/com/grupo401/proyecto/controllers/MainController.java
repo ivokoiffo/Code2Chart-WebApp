@@ -1,12 +1,13 @@
 package com.grupo401.proyecto.controllers;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.LinkedList;
 
 import javax.validation.Valid;
 import org.apache.commons.io.IOUtils;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,8 +39,8 @@ public class MainController {
 	
 	@RequestMapping(value="/api/generarDiagrama", method=RequestMethod.POST,
 			produces = MediaType.IMAGE_PNG_VALUE,consumes = "multipart/form-data")
-	public @ResponseBody byte[] generateDiagram(@RequestPart("model") @Valid FormData form,
-												@RequestPart("file")  @Valid MultipartFile file) throws IOException{
+	public @ResponseBody ResponseEntity<byte[]> generateDiagram(@RequestPart("model") @Valid FormData form,
+												@RequestPart("file")  @Valid MultipartFile file) {
 				
 		String fileContent;
 		try {
@@ -68,11 +69,10 @@ public class MainController {
 			
 			InputStream image = ImageHelper.getInstance().doGet(form.getName().concat(".png"));
 			
-			return IOUtils.toByteArray(image);
-						
-			
-		}catch (IOException e) {
-			return null;
+			return new ResponseEntity<byte[]>(IOUtils.toByteArray(image), HttpStatus.OK);
+
+		}catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 }
