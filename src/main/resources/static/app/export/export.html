@@ -5,32 +5,39 @@
     <div class="form-horizontal">
         <h4 class="head text-center" style="color:white">{{vm.title}}</h4>
         <br/>
-        <div layout='row' layout-align="center center">
-        	<div class="col-sm-5 col-xs-10" layout='column'>
-				<md-button class="descargar-archivo" ng-click="vm.generateLocal()">
-          			<i class="fa fa-download fa-5x" aria-hidden="true"></i>
-          			<p>Descargar archivo</p>
-  				</md-button>
-  			</div>
-        	<div class="col-sm-5 col-xs-10">
-				<div ng-show="checkingLogin">Checking login status...</div>
-				Login status:{{loggedIn}}
+        <div layout="column" style="margin-top:20px">
+	        <div flex layout='row' layout-align="center center">
+	        	<div class="col-sm-5 col-xs-10" layout='column'>
+					<md-button class="descargar-archivo" style="color:white" ng-click="vm.generateLocal()">
+	          			<i class="fa fa-download fa-5x" aria-hidden="true" style="color:white"></i>
+	          			<p>Descargar archivo</p>
+	  				</md-button>
+	  			</div>
+	        	<div class="col-sm-5 col-xs-10" layout='column'>
+					<md-button style="color:white" >
+						<i class="fa fa-google fa-5x" aria-hidden="true" style="color:white"></i>
+						<p>Exportar a Google Drive </p>
+					</md-button>
+				</div>
+				
+				<!-- Logica de drive 
 				<md-button class="md-raised" ng-disabled="checkingLogin || loggedIn" ng-click="login()">Log In</md-button>
 			<div ng-show="loggedIn">
 				<md-button class="md-raised" ng-disabled="uploading" ng-click="vm.generateDrive()">Upload image</md-button>
 				<input type="file" id="uploadImage" accept="image/*" 
 					onchange="angular.element(this).scope().upload()" style="display:none;">
-				<div ng-show="uploading">Uploading...</div>		
-		     </div>
+				<div ng-show="uploading">Cargando...</div>		
 			</div>
-        	<div layout="row" layout-align="center end">
+			-->
+			</div>
+        	<div flex layout="row" layout-align="center end" style="margin-top:45px">
 		            <md-button class="md-fab" ui-sref="form.configure">	
 		            	<i class="fa fa-arrow-left fa-lg" aria-hidden="true"></i>
 					</md-button>	
 					<md-button class="md-fab" ng-click="vm.redirectToNewForm()">	
 		            	<i class="fa fa-home fa-lg" aria-hidden="true"></i>
 					</md-button>
-		        </div>
+		   </div>
         </div>    
     </div>
 </div>
