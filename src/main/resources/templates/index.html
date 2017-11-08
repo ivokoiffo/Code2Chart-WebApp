@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html data-ng-app="code2chart">
 	<head>
+	<meta charset="utf-8"></meta>
 		<script type="text/javascript">
 			window.gapiCallbacks=[];
 			
@@ -39,13 +40,13 @@
 	</head>
 	<body style="background-image: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)), url('/images/fondo.jpg') ;background-size:cover;" >
     	<div layout="column" style="background-image: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)), url('/images/fondo.jpg') ;background-size:cover;">
-			<nav flex="" class="ng-cloak navbar navbar-inverse md-display-4" style="font-size:17px;background:transparent !important;border:0px">
+			<nav class="ng-cloak navbar navbar-inverse md-display-4" style="font-size:17px;background:transparent !important;border:0px">
 				  <div class="container-fluid">
 				    <div class="navbar-header">
 				      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-				        <span class="icon-bar"></span>
-				        <span class="icon-bar"></span>
-				        <span class="icon-bar"></span>                        
+				        <span class="icon-bar" style="background-color:white"></span>
+				        <span class="icon-bar" style="background-color:white"></span>
+				        <span class="icon-bar" style="background-color:white"></span>                        
 				      </button>
 				      <a class="navbar-brand" href="#"><img ng-src="/images/loguito.png" alt="Code2Chart" style="fill:wheat"></img></a>
 				  </div>
@@ -60,14 +61,16 @@
 				   </div>
 				 </div>
 			</nav>
-			<div flex="" class="container"	>
+			<div class="container"	>
 				<div data-ui-view=""></div>
 			</div>
-			<div flex="" class="piedepagina ng-cloak">
+			<!-- Footer
+			<div class="piedepagina ng-cloak">
 				  <p class="home-parag" style="text-align:center; color:white">
 					 Creado por el equipo de Code2Chart
 				  </p>
 			</div>
+			-->
 		</div>
     	
 	    <!-- js libraries -->

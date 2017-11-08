@@ -5,32 +5,110 @@
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="app/about/social.css">
 
-<div layout="row" layout-align="center center"  style="margin-top:30px">
-  <p class="md-display-4 text-center" style="font-size:50px;color:white">El equipo de Code2Chart</p>
+<div layout="row" layout-align="center center">
+  <p class="md-display-4 text-center" style="font-size:40px;color:white">El equipo de Code2Chart</p>
 </div>
-<md-content layout="row" layout-align="space-around space-between" layout-wrap style="margin-top:10px;background-color:transparent">
-  	<div ng-repeat="member in team" flex-xs flex-gt-xs="20" layout="row" >
-	<md-card style="background-color:transparent" md-theme-watch>
-        	<img ng-src={{member.ruta}} class="md-card-image" alt={{member.name}} />
+<md-content layout="row" layout-align="space-around space-between" layout-wrap style="background-color:transparent">
+  	<div flex-xs flex-gt-xs="20" layout="row" layout-padding >
+		<md-card style="background-color:transparent" md-theme-watch>	
+	        	<img ng-src="content/images/rodrigo.png" class="md-card-image" alt="Rodrigo Vazquez" />
+	        <md-card-title>
+	          <md-card-title-text>
+	            <span class="md-subhead" style="font-size:22px;color:white">Rodrigo Vazquez</span>
+	          </md-card-title-text>
+	          </md-card-title>
+	          <p flex style="color:white">
+				Rol:<br/>-Desarrollador Web <br/>-Desarrollador Mobile<br/>-Tester<br/>
+				<br/>Hobbies:<br/>Tocar la guitarra y tocar el bajo<br/>
+	          </p>
+	        <div layout="row" layout-align="center">
+	            <ul class="social-network social-circle">
+	                <li><a id="icono" href="https://www.linkedin.com/in/rodrigo-vazquez-102b2a114/" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+	            	<li><a id="icono" href="https://github.com/rovazquez" class="icoGithub" title="Github"><i class="fa fa-github"></i></a></li>
+	        	</ul>				
+	        </div>
+		</md-card>
+	</div>
+	<div flex-xs flex-gt-xs="20" layout="row" layout-padding>
+		<md-card style="background-color:transparent" md-theme-watch>	
+        	<img ng-src="content/images/ivan.png" class="md-card-image" alt="Iván Koiffman" />
         <md-card-title>
           <md-card-title-text layout-fill>
-            <span class="md-subhead" style="font-size:22px;color:white">{{member.name}}</span>
+            <span class="md-subhead" style="font-size:22px;color:white">Iván<br/> Koiffman</span>
           </md-card-title-text>
           </md-card-title>
           <p style="color:white">
-            {{member.bio}}
-          </p>
-          <br/><br/>
-          <p style="color:white">
-          {{member.minibio}}
+			<br/>Rol:<br/>-Project Manager<br/>-Desarrollador Web<br/>-Desarrollador Mobile<br/>-Tester<br/>
+			<br/>Hobbies:<br/>Jugar al Voley<br/>
           </p>
         <div layout="row" layout-align="center">
             <ul class="social-network social-circle">
-                <li><a id="icono" href={{member.rutaLinkedin}} class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-            	<li><a id="icono" href={{member.rutaGithub}} class="icoGithub" title="Github"><i class="fa fa-github"></i></a></li>
+                <li><a id="icono" href="https://www.linkedin.com/in/ivankoiffman/" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+            	<li><a id="icono" href="https://github.com/ivokoiffo" class="icoGithub" title="Github"><i class="fa fa-github"></i></a></li>
         	</ul>				
-        </div>
+        </div> 
 	</md-card>
+	</div>
+	<div flex-xs flex-gt-xs="20" layout="row" layout-padding >
+		<md-card style="background-color:transparent" md-theme-watch>	
+	        <img ng-src="content/images/santiago.png" class="md-card-image" alt="Santiago Varela" />
+	        <md-card-title>
+	          <md-card-title-text>
+	            <span class="md-subhead" style="font-size:22px;color:white">Santiago Varela</span>
+	          </md-card-title-text>
+	          </md-card-title>
+	          <p style="color:white">
+				<br/>Rol:<br/>-Analista Funcional<br/>-Desarrollador Mobile<br/>-Tester<br/>-Arquitecto de Software<br/>
+				<br/>Hobbies:<br/>Tocar la guitarra<br/>
+	          </p>
+	        <div layout="row" layout-align="center">
+	            <ul class="social-network social-circle">
+	                <li><a id="icono" href="https://www.linkedin.com/in/santiago-varela-379658a9/" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+	            	<li><a id="icono" href="https://github.com/santiagojvarela" class="icoGithub" title="Github"><i class="fa fa-github"></i></a></li>
+	        	</ul>				
+	        </div>
+	</md-card>
+	</div>
+	<div flex-xs flex-gt-xs="20" layout="row" layout-padding >
+		<md-card style="background-color:transparent" md-theme-watch>	
+	       	<img ng-src="content/images/jonatan.png" class="md-card-image" alt="Jonatan Martinez" />
+	        <md-card-title>
+	          	<md-card-title-text layout-fill>
+	            	<span class="md-subhead" style="font-size:22px;color:white">Jonatan Martinez</span>
+	        	</md-card-title-text>
+	        </md-card-title>
+	          <p style="color:white">
+				<br/>Rol:<br/>-Analista Funcional<br/>-Desarrollador Mobile<br/>-Tester<br/>-Arquitecto de Software<br/>
+				<br/>Hobbies:<br/>Leer libros<br/>
+	          </p>
+	        <div layout="row" layout-align="center">
+	            <ul class="social-network social-circle">
+	                <li><a id="icono" href="https://www.linkedin.com/in/jonatan-gabriel-martinez-47a47093/" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+	            	<li><a id="icono" href="https://github.com/jonmartinez123" class="icoGithub" title="Github"><i class="fa fa-github"></i></a></li>
+	        	</ul>				
+	        </div>
+		</md-card>
+	</div>
+	<div flex-xs flex-gt-xs="20" layout="row" layout-padding>
+		<md-card style="background-color:transparent" md-theme-watch>	
+	       	<img ng-src="content/images/jonatan.png" class="md-card-image" alt="Nicolás Taccari" />
+	        <md-card-title>
+	          	<md-card-title-text >
+	            	<span class="md-subhead" style="font-size:22px;color:white">Nicolás Taccari</span>
+	        	</md-card-title-text>
+	        </md-card-title>
+	          <p style="color:white">
+				Rol:<br/>-Desarrollador Web<br/>-Desarrollador Mobile<br/>-Tester<br/>
+				<br/>Hobbies:<br/>Ir al gimnasio<br/>
+	          </p>
+	        <div layout="row" layout-align="center">
+	            <ul class="social-network social-circle">
+	                <li><a id="icono" href="https://www.linkedin.com/in/nicolas-taccari-84a296139/" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+	            	<li><a id="icono" href="https://github.com/nicoTaccari" class="icoGithub" title="Github"><i class="fa fa-github"></i></a></li>
+	        	</ul>				
+	        </div>
+		</md-card>
+		
 	</div>
 </md-content>
 </div>
