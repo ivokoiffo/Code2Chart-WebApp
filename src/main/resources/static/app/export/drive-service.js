@@ -119,7 +119,6 @@ angular.module('code2chart')
                         return waitForFileToBecomeActive(file.id).then(function(){
                             return insertPermission(file).then(function(){
                                 return file.webContentLink;
-                                toaster.success("Su archivo ha sido subido a su cuenta de Google Drive")
                             });
                         });
                     });

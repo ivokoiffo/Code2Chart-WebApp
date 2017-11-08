@@ -38,7 +38,7 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic"></link>
 		<link rel="icon" href="/images/logo.png"></link>
 	</head>
-	<body>
+	<body ng-controller="refreshController">
     	<div layout="column" style="background-image: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)), url('/images/fondo.jpg') ;background-size:cover;">
 			<nav class="ng-cloak navbar navbar-inverse md-display-4" style="font-size:17px;background:transparent !important;border:0px">
 				  <div class="container-fluid">
@@ -106,6 +106,7 @@
 	    <script src="app/home/home.component.js"></script>
 	    <script src="app/home/home.controller.js"></script>
 	    <script src="app/toaster_controller.js"></script>
+	    <script src="app/refreshController.js"></script>
 	 
 	    <!-- About us -->
 	    <script src="app/about/about.component.js"></script>
@@ -133,5 +134,7 @@
 	
 	<script src="https://apis.google.com/js/client.js?onload=gapiLoaded"></script>
 	<toaster-container toaster-options="{'newest-on-top':true}"></toaster-container>
+	
+	<div data-ng-view=""></div>
 	</body>
 </html>

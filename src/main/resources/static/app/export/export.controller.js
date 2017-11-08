@@ -53,7 +53,7 @@
 	    			var fileName = vm.parent.getData().name + '.png';
 	    			if(saveLocal){
 		    			saveAs(response, fileName);
-		    			toaster.success("Su archivo ha sido descargado con exito!");
+		    			toaster.success("Su archivo ha sido generado con exito!");
 	    			}else{
 	    				var driveFile = new File([response],fileName);
 	    				var filesArray = [];
@@ -98,6 +98,7 @@
                 $scope.images.push(link);
             }).finally(function(){
                 $scope.uploading=false;
+                toaster.success("Su archivo ha sido subido a su cuenta de Google Drive")
             });
         }
     }
