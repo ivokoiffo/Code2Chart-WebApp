@@ -1,9 +1,8 @@
-<div ng-controller="descargarController">
-<meta meta charset=utf-8>
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-		
-<md-button class="descargar-archivo" ng-click="descargar()">
-<i class="fa fa-download fa-5x" aria-hidden="true"></i>
-<p>Descargar Aplicacion</p>
-</md-button>
+<meta charset="utf-8">
+<div ng-controller="descargarController" ng-init="descargar()">
+	<div layout="column" layout-align="center center" >
+		<h1 flex class="md-display-4" style="color:white;font-size:60px;">Gracias por descargar Code2Chart!</h1>		
+		<p flex class="md-caption" style="color:white;font-size:30px;">Si la descarga no comienza, haga <span ng-click="descargar()" style="color:#ec744a">click aquí</span></h2>
+	</div>
 </div>
