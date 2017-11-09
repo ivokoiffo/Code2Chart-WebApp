@@ -13,7 +13,6 @@
         vm.formData = {};
         $scope.file = [];
         vm.isFileAbsent = true;
-        
         //3 listener para el evento que lanza la directiva
         $scope.$on("seletedFile", function (event, args) {  
             $scope.$apply(function () {  
@@ -25,7 +24,8 @@
         
         $scope.clearFile = function(){
         	if($scope.file.length > 0){
-        		$scope.file = null;
+        		$scope.file.pop();
+        		vm.isFileAbsent = true;
         	}
         };        
         
@@ -33,10 +33,10 @@
         	var github = vm.formData.githubUrl;
         	if(github.length > 0){
 	        	var patron = new RegExp("((((https|http):\/\/)|www\\.)raw\\.githubusercontent\\.com\/+.+\\.c)|(raw\\.githubusercontent\\.com\/+.+\\.c)");
-	        	return (patron.test(github))
+	        	return (patron.test(github));
         	}
         	return false;
-        	//toaster.error("Ingrese un url raw correcta");
+        	//toaster.error("Ingrese una url correcta");
         };
         
         vm.hasLocalPath = function(){
@@ -44,7 +44,7 @@
         }; 
                                 
         vm.anyFile = function(){
-        	return !( vm.hasGithubUrl() || vm.hasLocalPath() ); 
+        	return !( vm.hasGithubUrl() || vm.hasLocalPath()); 
         };
 
         vm.$onInit = activate;
