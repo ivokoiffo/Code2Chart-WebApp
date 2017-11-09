@@ -5,9 +5,9 @@
         .module('code2chart')
         .controller('fileUploadController', fileUploadController);
     	
-    fileUploadController.$inject = ['$scope'];
+    fileUploadController.$inject = ['$scope','toaster'];
  
-    function fileUploadController($scope) {
+    function fileUploadController($scope,toaster) {
         var vm = this;
         vm.title = 'Elija el archivo que quiera convertir';
         vm.formData = {};
@@ -36,6 +36,7 @@
 	        	return (patron.test(github))
         	}
         	return false;
+        	//toaster.error("Ingrese un url raw correcta");
         };
         
         vm.hasLocalPath = function(){
