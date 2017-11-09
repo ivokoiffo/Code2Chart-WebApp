@@ -5,9 +5,9 @@
         .module('code2chart')
         .controller('fileUploadController', fileUploadController);
     	
-    fileUploadController.$inject = ['$scope','toaster'];
+    fileUploadController.$inject = ['$scope','toaster','$location'];
  
-    function fileUploadController($scope,toaster) {
+    function fileUploadController($scope,toaster,$location) {
         var vm = this;
         vm.title = 'Elija el archivo que quiera convertir';
         vm.formData = {};
@@ -21,6 +21,11 @@
                 vm.isFileAbsent = false;
             });  
         });  
+        
+        
+        $scope.reloadRoute = function() {
+        	$location.path("/form/fileUpload");
+        }
         
         $scope.clearFile = function(){
         	if($scope.file.length > 0){
