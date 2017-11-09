@@ -50,7 +50,7 @@
 	
 	    	dataFactory.generarDiagrama(formData)
 	    		.then(function (response){
-	    			var fileName = vm.parent.getData().name + '.png';
+	    			var fileName = vm.parent.getData().name + '-' + vm.parent.getData().author +  '.png';
 	    			if(saveLocal){
 		    			saveAs(response, fileName);
 		    			toaster.success("Su archivo ha sido generado con exito!");
