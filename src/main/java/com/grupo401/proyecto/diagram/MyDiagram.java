@@ -27,7 +27,7 @@ public class MyDiagram {
     
     private int cantidadTotalDeBucles = 0;
     
-	public MyDiagram(String xmlPath, String nombreDelDiagrama, String author, String description){
+	public MyDiagram(String xmlPath, String nombreDelDiagrama, String author){
 		
 		loadGraph(diagram, xmlPath);
 		

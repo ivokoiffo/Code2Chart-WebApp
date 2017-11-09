@@ -4,17 +4,15 @@ public class FormData {
 	
 	private String githubUrl;
 	private String name;
-	private String description;
 	private String author;
 	
 	public FormData(){		
 	}
 
-	public FormData(String git,String name,String author,String desc){
+	public FormData(String git,String name,String author){
 		this.githubUrl = git;
         this.name = name;
-        this.description = author;
-        this.author = desc;
+        this.author = author;
 	}
 
 	public String getGithubUrl() {
@@ -31,14 +29,6 @@ public class FormData {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
 	}
 
 	public String getAuthor() {

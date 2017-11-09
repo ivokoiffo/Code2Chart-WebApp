@@ -1,5 +1,6 @@
 package com.grupo401.proyecto.controllers;
 
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.LinkedList;
 
@@ -65,14 +66,16 @@ public class MainController {
 			list.forEach(a-> builder.appendNode(a.getId(), a.getTipo(), a.getContent()).appendLink(a.getFather(), a.getId(), ""));
 			builder.build();
 			
-			new MyDiagram(builder.getFile().getAbsolutePath(),form.getName().concat(".png"),form.getAuthor(), null);
+			new MyDiagram(builder.getFile().getAbsolutePath(),form.getName().concat(".png"),form.getAuthor());
 			
 			InputStream image = ImageHelper.getInstance().doGet(form.getName().concat(".png"));
 			
 			return new ResponseEntity<byte[]>(IOUtils.toByteArray(image), HttpStatus.OK);
 
-		}catch (Exception e) {
+		}catch (FileNotFoundException e) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.CONFLICT);
 		}
 	}
 }
