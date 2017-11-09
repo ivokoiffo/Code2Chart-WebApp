@@ -868,7 +868,7 @@ PreprocessorComplexInclude
     ;
 
 ComplexDefine
-    :   '#' Whitespace? 'define'  ~[#]*
+    :   '#' Whitespace? 'define'  ~[#]*?
         -> skip
     ;
          
