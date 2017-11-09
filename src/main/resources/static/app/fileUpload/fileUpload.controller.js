@@ -35,7 +35,7 @@
         vm.hasGithubUrl = function(){
         	var github = vm.formData.githubUrl;
         	if(github.length > 0){
-	        	var patron = new RegExp("(((^((https|http):\/\/)|^(www\\.)|^((https|http):\/\/www\\.))raw\\.githubusercontent\\.com\/+.+(\\.c)$)|^(raw\\.githubusercontent\\.com\/+.+(\\.c)$))");
+	        	var patron = new RegExp("^(https:\/\/)raw\\.githubusercontent\\.com\/+.+(\\.c)$");
 	        	return ( patron.test(github) && !(/\s/g.test(github)));
         	}
         	return false;
