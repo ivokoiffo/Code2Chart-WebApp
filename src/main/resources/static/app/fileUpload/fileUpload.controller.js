@@ -24,11 +24,10 @@
         });  
         
         $scope.clearFile = function(){
-        	while(($scope.file.length > 0)){
-        		$scope.file.pop();
-        		vm.isFileAbsent = true;
+        	if($scope.file.length > 0){
+        		$scope.file = null;
         	}
-        }        
+        };        
         
         vm.hasGithubUrl = function(){
         	var github = vm.formData.githubUrl;

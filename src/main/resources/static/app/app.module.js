@@ -29,7 +29,7 @@
                     ext = value.substring(value.lastIndexOf('.') + 1).toLowerCase();   
 
                     if(validFormats.indexOf(ext) == -1){
-                    	toaster.error("Archivo invalido. Suba un archivo con extension .c");
+                    	toaster.error("Archivo inválido. Suba un archivo con extension .c");
                     	return ;
                     }
                     var files = event.target.files;
