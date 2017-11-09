@@ -12,21 +12,18 @@
         vm.title = 'Elija el archivo que quiera convertir';
         vm.formData = {};
         $scope.file = [];
-        vm.isFileAbsent = true;
         
         //3 listener para el evento que lanza la directiva
         $scope.$on("seletedFile", function (event, args) {  
             $scope.$apply(function () {  
                 //se agrega el file al array, luego se appendea en el json  
                 $scope.file.push(args.file);
-                vm.isFileAbsent = false;
             });  
         });  
         
         $scope.clearFile = function(){
         	while(($scope.file.length > 0)){
         		$scope.file.pop();
-        		vm.isFileAbsent = true;
         	}
         }        
         
