@@ -35,7 +35,7 @@ public class ParserTest {
 		list.forEach(a-> builder.appendNode(a.getId(), a.getTipo(), a.getContent()).appendLink(a.getFather(), a.getId(), ""));
 		builder.build();
 		
-		MyDiagram mainFrame = new MyDiagram(builder.getFile().getAbsolutePath(), "diagrama1.png",null,null);
+		//MyDiagram mainFrame = new MyDiagram(builder.getFile().getAbsolutePath(), "diagrama1.png",null,null);
 //		mainFrame.setVisible(true);
 	}
 	
