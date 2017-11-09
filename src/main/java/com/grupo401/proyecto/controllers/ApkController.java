@@ -19,7 +19,7 @@ public class ApkController {
 			
 		try {
 			
-			InputStream inputStream = ClassLoader.getSystemResourceAsStream("test.apk");
+			InputStream inputStream = ClassLoader.getSystemResourceAsStream("code2chart.apk");
 			return IOUtils.toByteArray(inputStream);
 		} catch (Exception e) {
 			return null;
