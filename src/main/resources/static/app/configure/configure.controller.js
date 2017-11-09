@@ -14,8 +14,7 @@
         
         vm.hasAllParams = function(){
         	return ( !(vm.formData.name.length > 0) ||
-        		   !(vm.formData.author.length > 0) ||
-        		   !(vm.formData.description.length > 0) );
+        		   !(vm.formData.author.length > 0) );
         };
         
         vm.$onInit = activate;

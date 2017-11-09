@@ -44,6 +44,7 @@ public class MainController {
 												@RequestPart("file")  @Valid MultipartFile file) {
 				
 		String fileContent;
+		String fullname = new String();
 		try {
 			if(!(form.getGithubUrl().isEmpty())){
 				fileContent = this.fileHelper.getContentFromGithub(form.getGithubUrl());
@@ -66,9 +67,10 @@ public class MainController {
 			list.forEach(a-> builder.appendNode(a.getId(), a.getTipo(), a.getContent()).appendLink(a.getFather(), a.getId(), ""));
 			builder.build();
 			
-			new MyDiagram(builder.getFile().getAbsolutePath(),form.getName().concat(".png"),form.getAuthor());
+			fullname = form.getName() + "-" + form.getAuthor();
+			new MyDiagram(builder.getFile().getAbsolutePath(),fullname.concat(".png"));
 			
-			InputStream image = ImageHelper.getInstance().doGet(form.getName().concat(".png"));
+			InputStream image = ImageHelper.getInstance().doGet(fullname.concat(".png"));
 			
 			return new ResponseEntity<byte[]>(IOUtils.toByteArray(image), HttpStatus.OK);
 
