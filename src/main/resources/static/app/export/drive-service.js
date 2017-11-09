@@ -6,7 +6,7 @@ angular.module('code2chart')
             return gapi.client.drive.files.insert(
                 {
                     'resource':{
-                        "title":'Drive API From JS Sample',
+                        "title":'Code2Chart - Diagramas',
                         "mimeType": "application/vnd.google-apps.folder"
                     }
                 }
